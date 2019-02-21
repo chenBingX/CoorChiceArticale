@@ -33,7 +33,7 @@ stv.setAutoAdjust(true);
 
 当然，停止 **Adjuster** 只需要设置为false即可。
 
-## 如何装载Adjuster到SuperTextView
+## 如何装载Adjuster到SuperTextView?
 
 ```
 stv.addAdjuster(mAdjuster);
@@ -62,12 +62,12 @@ mAdjuster.setOpportunity(opportunity);
 
 ```
 public enum Opportunity {
-// 背景层和Drawable层之间
-BEFORE_DRAWABLE,
-// Drawable层和文字层之间
-BEFORE_TEXT,
-// 最上层
-AT_LAST
+    // 背景层和Drawable层之间
+    BEFORE_DRAWABLE,
+    // Drawable层和文字层之间
+    BEFORE_TEXT,
+    // 最上层
+    AT_LAST
 }
 ```
 
