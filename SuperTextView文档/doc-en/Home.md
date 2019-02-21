@@ -120,3 +120,5 @@ Innovative modules make it easy to achieve a variety of difficult animations, or
 Query all the properties currently supported by SuperTextView.
 ```
 
+
+> [Welcome](https://github.com/chenBingX/SuperTextView) | [New issues](https://github.com/chenBingX/SuperTextView/issues)
