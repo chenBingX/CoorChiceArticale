@@ -5,4 +5,14 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="EclipseCodeFormatter">
+    <option name="defaultSettings" value="true" />
+    <option name="id" value="1469081687279" />
+    <option name="importOrderConfigFilePath" value="$USER_HOME$/Downloads/AndroidCodeStyle/import_order.importorder" />
+    <option name="importOrderFromFile" value="true" />
+    <option name="name" value="default" />
+    <option name="pathToConfigFileJava" value="$USER_HOME$/Downloads/AndroidCodeStyle/AndroidCodeStyle.xml" />
+    <option name="selectedJavaProfile" value="Android Code Style" />
+    <option name="useForLiveTemplates" value="true" />
+  </component>
 </project>
