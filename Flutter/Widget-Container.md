@@ -43,7 +43,7 @@ void main() => runApp(
 
 # Container 的常用属性
 
-- child → Widget: 子 Widget。默认情况下，如果没有设置该属性，子 Widget 会被充满整个父 Widget，即使子 Widget 设置了 width 和 height。
+- child → Widget: 子 Widget。默认情况下，子 Widget 会被充满整个父 Widget，即使子 Widget 设置了 width 和 height。
 
 - alignment → AlignmentGeometry: 配置子 Widget 在 Container 中的位置。  
 
