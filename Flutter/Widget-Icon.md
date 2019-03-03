@@ -2,7 +2,7 @@ Icon 用于展示字形图标，在 Flutter 中，已经内置了很多常用的
 
 你可以通过 **Icons**  引用到这些图标。  
 
-# 创建 Icon
+# 1.创建 Icon
 
 ```
 Widget _buildIcons() => Center(
@@ -23,7 +23,7 @@ Widget _buildIcons() => Center(
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-Icons.png)  
 
 
-# Icon 的属性
+# 2.Icon 的属性
 
 - icon → IconData：图标数据。通过 **Icons** 可以引用到很多常用的图标。  
 

@@ -1,6 +1,6 @@
 List 被用于展示列表数据。  
 
-# 创建 ListView  
+# 1.创建 ListView  
 
 ```
 Widget _buildListView() {
@@ -59,7 +59,7 @@ Widget _buildListView() {
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-demo7.png)  
 
-# 常用属性
+# 2.常用属性
 
 - childrenDelegate → SliverChildDelegate：用于提供子 Widget 的代理。  
 

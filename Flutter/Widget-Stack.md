@@ -1,6 +1,6 @@
 Stack 用于组织一系列 Widget。以第一个 Widget 为基准，后续的 Widget 将会覆盖在其上。  
 
-# 创建一个 Stack
+# 1.创建一个 Stack
 
 ```
 Widget _buildStack() => Stack(
@@ -48,7 +48,7 @@ main() => runApp(MaterialApp(
 
 
 
-# Stack 常用属性
+# 2.Stack 常用属性
 
 - alignment → AlignmentGeometry: 设置 Stack 中非第一个 Widget 的相对位置。  
 

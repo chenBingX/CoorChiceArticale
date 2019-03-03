@@ -8,7 +8,7 @@ Row 和 Column 用法基本一致，只是 Row 是水平方向布局，Column是
 
   
 
-# 创建 Row
+# 1.创建 Row
 
 ```
 Widget _buildRowImg() => Row(
@@ -44,7 +44,7 @@ main() => runApp(MaterialApp(
 
 []
 
-# Row 和 Column 的常用属性 
+# 2.Row 和 Column 的常用属性 
 
 - children → List<Widget>：子 Widget。  
 
@@ -53,7 +53,7 @@ main() => runApp(MaterialApp(
 - crossAxisAlignment → CrossAxisAlignment：副轴方向的对齐方式。如，当主轴是水平轴时，副轴是垂直轴。  
 
 
-## MainAxis 和 CrossAxis
+## 2.1 MainAxis 和 CrossAxis
 
 - Row  
     
@@ -65,7 +65,7 @@ main() => runApp(MaterialApp(
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Column-axis.png)
 
 
-## MainAxisAlignment 效果
+## 2.2 MainAxisAlignment 效果
 
 - start   
     
@@ -97,7 +97,7 @@ main() => runApp(MaterialApp(
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/MainAxisAlignment_spaceEvenly.png)
 
 
-## CrossAxisAlignment 效果
+## 2.3 CrossAxisAlignment 效果
 
 
 - start  

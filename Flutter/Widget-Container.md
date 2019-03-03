@@ -1,12 +1,11 @@
 
-Container 通常用来包裹一个 Widget，为它增加 Padding、Border、Margin，设置背景等。
+Container 是一个集大成的 widget，在开发过程中使用相当频繁。 
 
-这是 Container 的结构：    
-
+这是 Container 的结构：
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-container结构.png)  
 
-# 创建 Container
+# 1.创建 Container
 
 例子：  
 
@@ -41,9 +40,9 @@ void main() => runApp(
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-示例3.png)  
 
 
-# Container 的常用属性
+# 2.Container 的常用属性
 
-- child → Widget: 子 Widget。默认情况下，子 Widget 会被充满整个父 Widget，即使子 Widget 设置了 width 和 height。
+- child → Widget: 子 Widget。
 
 - alignment → AlignmentGeometry: 配置子 Widget 在 Container 中的位置。  
 
@@ -51,5 +50,13 @@ void main() => runApp(
 
 - padding → EdgeInsetsGeometry: 设置 Padding。
 
-- decoration → Decoration: 设置边框装饰。比如常用的 `BoxDecoration` 。
+- decoration → Decoration: 设置装饰，在 child 下面。比如常用的 `BoxDecoration` 。
+
+- foregroundDecoration → Decoration: 设置装饰，在 child 上面。
+
+- color → Color: 设置区域颜色。  
+  
+  ⚠️ 注意，当你在 `decoration` 中，通过 **BoxDecoration**
+  设置了颜色之后，就不能再设置该属性了。  
+  
 

@@ -2,7 +2,7 @@ BoxDecoration 被用于装饰绘制区域。
 
 可以设置绘制区域的背景颜色、背景图片、形状、边框等效果。  
 
-# 创建 BoxDecoration
+# 1.创建 BoxDecoration
 
 ```
 main() => runApp(Center(
@@ -34,7 +34,7 @@ main() => runApp(Center(
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-logo2.png)  
 
-# BoxDecoration 常用属性
+# 2.BoxDecoration 常用属性
 
 1. backgroundBlendMode → BlendMode: 背景色的混合模式。默认为 `[BlendMode.srcOver]`。
 

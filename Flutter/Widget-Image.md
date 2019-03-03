@@ -2,7 +2,7 @@ Image 用于展示图片。
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-image.png)
 
-# 创建 Image 
+# 1.创建 Image 
 
 ```
 Widget _buildImage() => Center(
@@ -21,7 +21,7 @@ Widget _buildImage() => Center(
 
 
 
-# Image 常用属性
+# 2.Image 常用属性
 
 - alignment → AlignmentGeometry: 图片的对齐方式。  
 
@@ -42,7 +42,7 @@ Widget _buildImage() => Center(
 - repeat → ImageRepeat：当图片不能充满 Image 时，如何充满。  
 
 
-# 常用的创建 Image 的方式
+# 3.常用的创建 Image 的方式
 
 1. `Image(@required ImageProvider image, ...)`  
     

@@ -1,6 +1,6 @@
 Text Widget 是用来展示普通文字的。  
 
-# 创建 Text
+# 1.创建 Text
 
 这样就能创建一个 Text 实例：  
 
@@ -38,7 +38,7 @@ void main() => runApp(Container(
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter示例1.png)
 
-# Text 的属性
+# 2.Text 的属性
   
 
     - data → String: 内容，不能为 null。
@@ -54,6 +54,7 @@ void main() => runApp(Container(
     - overflow → TextOverflow: 文字超长的处理。可选择值 clip（剪裁）、fade（渐隐）、ellipsis（省略）。  
     
     - textAlign → TextAlign: 文字水平对齐方式。常用值：left、right、center。
+    
 
 例子，在 `main.dart` 中：    
 
@@ -79,3 +80,51 @@ void main() => runApp(Container(
 ```
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter示例2.png)
+
+## TextDecoration
+
+尝试运行以下代码：  
+
+```
+class TestPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.lightBlue,
+      child: Text(
+        'Hello, Flutter!',
+      ),
+    );
+  }
+}
+```  
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Text下面有线.png)  
+
+你会发现，文字下面出现了两条黄线。  
+
+它们是默认的装饰线，你可以通过设置 Text 的 `style` 把它们去掉。  
+
+```
+class TestPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.lightBlue,
+      child: Text(
+        'Hello, Flutter!',
+        // TextDecoration.none
+        style: TextStyle(decoration: TextDecoration.none),
+      ),
+    );
+  }
+}
+```
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Text下面无线.png)  
+
+设置 **TextDecoration.none** 就可以去掉两条黄线了。  
