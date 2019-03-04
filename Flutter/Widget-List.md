@@ -4,45 +4,15 @@ List 被用于展示列表数据。
 
 ```
 Widget _buildListView() {
+
+  // 用于创建子 Item 的函数
   Widget _buildItem(var index) {
-    return Container(
-      color: Colors.white,
-      margin: EdgeInsets.only(top: 6),
-      height: 80,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            width: 48,
-            height: 48,
-            margin: EdgeInsets.only(left: 16),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.lightBlue, width: 1),
-                image: DecorationImage(
-                    image: NetworkImage(
-                  'http://www.gx8899.com.img.800cdn.com/uploads/allimg/160804/3-160P4111639.jpg',
-                ))),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 16),
-            child: Text(
-              'Player ${index + 1}',
-              textDirection: TextDirection.ltr,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
-    );
+    return ...
   }
 
   List<Widget> createDatas() {
     var items = <Widget>[];
+    // 创建 20 条数据
     for (var i = 0; i < 20; i++) {
       items.add(_buildItem(i));
     }
@@ -50,10 +20,13 @@ Widget _buildListView() {
   }
 
   return ListView(
+    // 设置 ListView 的子 Widget
     children: createDatas(),
   );
 }
 ```
+
+重点就是给 ListView 传一个 List<Widget> 数组。
 
 运行效果：  
 
@@ -66,3 +39,4 @@ Widget _buildListView() {
 - itemExtent → double：限制 item 的高度。  
 
 - children → List<Widget>：item 数组。
+
