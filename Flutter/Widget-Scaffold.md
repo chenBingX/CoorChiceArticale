@@ -84,16 +84,96 @@ AppBar 的常用属性：
 |brightness|Brightness|影响状态栏上的文字颜色。Brightness.light-黑色。Brightness.dark-白色|
 |titleSpacing|double|设置 title 的空间|
 |toolbarOpacity|double|透明度|
-|bottomOpacity|double|bottom 的透明度|
+|bottomOpacity|double|bottom 的透明度|  
 
-![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/AppBar.png)
+```
+AppBar(
+  title: Text('Scanffold Page'),
+  // 返回
+  leading: IconButton(
+      icon: Icon(Icons.menu),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip),
+  actions: <Widget>[
+    IconButton(
+        icon: Icon(Icons.share),
+        onPressed: () {},
+        tooltip: 'Share Button Clicked!')
+  ],
+  elevation: 5.0,
+  backgroundColor: Colors.yellow,
+  brightness: Brightness.dark,
+  titleSpacing: 10,
+  toolbarOpacity: 1.0,
+  bottom: TabBar(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.grey,
+      indicatorColor: Colors.white,
+      controller: tabController,
+      tabs: tabs.map((e) => Tab(text: e)).toList()),
+)
+```
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/AppBar.png) 
 
 
 ## 3.2 BottomNavigationBar
 
+Scaffold 中的底部导航栏。  
+
+BottomNavigationBar 的常用属性：  
+
+|属性|类型|说明|
+|---|---|---|
+|items|List<BottomNavigationBarItem>|导航栏上的item|
+|onTap|ValueChanged<int>|当一个item被点击的时候会回调|
+|currentIndex|int|设置当前选中的item|
+|fixedColor|Color|选中的item的颜色|
+|iconSize|Color|选中的item的颜色|  
+
+```
+BottomNavigationBar(
+  items: [
+    BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('首页')),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.favorite), title: Text('收藏')),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.add_shopping_cart), title: Text('订单')),
+  ],
+  currentIndex: _currentIndex,
+  fixedColor: Colors.blue,
+  onTap: (index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  },
+)
+```
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/BottomNavbar.gif)  
+
+### 3.2.1 BottomNavigationBarItem
+
+在 BottomNavigationBar 中，item 的类型需要为 **BottomNavigationBarItem**。  
+
+看看 BottomNavigationBarItem 都有那些常用的属性：  
+
+|属性|类型|说明|
+|---|---|---|
+|icon|Widget-Icon|item的图标|
+|activeIcon|Widget|设置当item被选中时的Widget，没有设置，选中时也使用icon|
+|title|Widget|item的文字|
 
 
-
+```
+BottomNavigationBarItem(icon: Icon(Icons.home)
+      // 选中时
+    , activeIcon: Icon(Icons.pages)
+    , title: Text('首页')
+)
+```
 
 
 
