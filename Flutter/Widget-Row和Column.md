@@ -82,7 +82,7 @@ main() => runApp(MaterialApp(
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/MainAxisAlignment_center.png)
 
 
-- spaceBetween: 中间刘间隙。  
+- spaceBetween: 中间留间隙。  
     
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/MainAxisAlignment-spaceBetwee.png)
 
