@@ -31,6 +31,7 @@ CustomScrollView(
 |physics|ScrollPhysics|控制滚动效果。默认 AlwaysScrollableScrollPhysics|
 |shrinkWrap|bool|是否由内容的大小决定 ScrollView 的大小|
 |anchor|double|内容区域的锚点（起始位置）。比如设为 0.5，内容区域将会从 ScrollView 中间位置开始|
+|primary|bool|如果 controller 为null，该项为 true，会使用 PrimaryScrollController|
 
 
 CustomScrollView 中通常添加的是 Sliver 系列的 Widget，比如 SliverList、SliverGrid、SliverPadding 等，因为它们本身没有包含滚动，所以能被统一成一个整体滚动。
@@ -181,5 +182,43 @@ SliverList(
 看看将上述二者组合的效果：  
 
 ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/SliverGridList.gif)
+
+
+# 4.ScrollController
+
+ScrollController 是用于控制滚动控件的。  
+
+## 4.1 ScrollController的属性
+
+先看看它的属性：  
+
+|属性|类型|说明|
+|---|---|---|
+|keepScrollOffset|bool|是否保存滚动状态。如果保存了，当前重建时会恢复状态。默认为true|
+|initialScrollOffset|double|初始滚动距离|
+
+## 4.2 ScrollController 常用方法
+
+1. `addListener()`  
+    
+    该方法中添加的回调，会在滚动时被调用。
+    
+    此时可以获取滚动过程中的距离、位置等信息。  
+    
+    ```
+    addListener((){
+      print('d = ${scrollController.offset}');
+    })
+    ```
+    
+2. `jumpTo()`  
+    
+    跳到指定位置。无动画。  
+    
+3. `animateTo()`  
+    
+    跳转到指定位置。有动画。
+
+
 
 
