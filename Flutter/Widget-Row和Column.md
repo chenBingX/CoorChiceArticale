@@ -42,7 +42,8 @@ main() => runApp(MaterialApp(
 
 看看效果： 
 
-[]
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter-demo4.png)  
+
 
 # 2.Row 和 Column 的常用属性 
 
@@ -100,16 +101,19 @@ main() => runApp(MaterialApp(
 ## 2.3 CrossAxisAlignment 效果
 
 
-- start  
+- start: children在交叉轴上起点处展示  
     
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/CrossAxisAlignment-start.png)
     
-- end  
+- end: children在交叉轴上末尾展示  
     
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/CrossAxisAlignment-end.png)
     
-- center  
+- center：children在交叉轴上居中展示   
     
     ![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/CrossAxisAlignment-center.png)
 
+- baseline：在交叉轴方向，使得children的baseline对齐
+
+- stretch：让children填满交叉轴方向
 
