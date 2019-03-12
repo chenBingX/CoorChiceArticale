@@ -1,0 +1,163 @@
+在 Flutter 中，可以使用 `dart:io` 包里提供的原生的 **HttpClient** 来构建网络请求。  
+
+# 1.HttpClient 使用步骤
+
+首先，需要导入以下两个 dart 包：  
+
+```
+import 'dart:convert';
+import 'dart:io';
+```
+
+1. 创建 HttpClient
+    
+    ```
+    HttpClient httpClient = HttpClient();
+    ```
+
+2. 构建请求 uri
+    
+    ```
+    var uri = new Uri.http('v.juhe.cn', '/toutiao/index',
+            {'key': '******', 'type': 'keji'});
+    ```
+    
+3. 打开Http连接
+    
+    ```
+    var request = await httpClient.getUrl(uri);
+    ```
+
+4. 等待连接服务器（会将请求信息发送给服务器），请求成功后会返回 HttpClientResponse
+    
+    ```
+    var response = await request.close();
+    ```
+    
+5. 读取响应内容
+    
+    ```
+    // 判断 response 状态
+    if (response.statusCode == HttpStatus.ok) {
+      // 转换 response，获取结果
+      var responseBody = await response.transform(utf8.decoder).join();
+    } 
+    ```
+    
+6. 关闭client，通过该client发起的所有请求都会中止
+    
+    ```
+    httpClient.close();
+    ```
+    
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/httpdemo1.png)
+
+# 2. 一种数据解析的方案
+
+Flutter 禁止了 dart 中的反射！  
+
+这可能让你请求到数据后，解析成数据类变得困难重重...  
+
+毕竟，在 Java 中的 Json 解析库 Gson、FastJson 等内部，都依赖于反射实现。  
+
+当然， [官方推荐的方案](https://flutter.dev/docs/development/data-and-backend/json) 也不是不能用，但使用起来，实在费劲。  
+
+现在，推荐一种解析数据的方案。  
+
+在开始了解这种方案前，建议先看一下章节： [数据类]()，了解如何不费吹灰之力的生成 Json 可转的数据类。  
+
+首先，在我们的项目中，接口返回的数据通常是约定好了一个最基础的结构的，比如：  
+
+这样的  
+
+```
+{
+    "reason": "成功的返回",
+    "result": {
+        "stat": "1",
+        "data": ...
+    },
+    "error_code": 0
+}
+```
+
+或者这样的  
+
+```
+{
+    "reason": "成功的返回",
+    "data":...,
+    "error_code": 0
+}
+```
+
+其中，除了 `data` 部分是变化的，其余部分都是固定的格式。   
+
+我们通常会封装一个基础的数据类，然后让 `data` 部分成为动态的（比如使用一个范型来代替占位），因为我们不想重复的定义这种结构的数据类。
+
+以第一种结构为例，看看如何实现吧。  
+
+1. 定义基础数据类 Response
+    
+    ```
+    import 'dart:convert';
+    
+    class Response{
+      String reason;
+      int error_code;
+      Result result;
+    
+      // parseDataFunction data 数据类的解析函数
+      static Response parse(String data, var parseDataFunction) {
+        // 通过 dart:convert 提供的 jsonDecode() 函数将原始数据类转换为 Map<String, dynamic> map
+        var map = jsonDecode(data);
+        Response response = Response();
+        response.reason = map['reason'];
+        response.error_code = map['error_code'];
+        response.result = Result.fromMap(map['result'], parseDataFunction);
+        return response;
+      }
+    }
+    
+    class Result{
+      String stat;
+      // 真正需要的数据类
+      var data;
+    
+      static Result fromMap(Map<String, dynamic> map, var parseDataFunction){
+        Result result = Result();
+        result.stat = map['stat'];
+        result.data = parseDataFunction(map['data']);
+        return result;
+      }
+    }
+    ```
+
+    其中，核心有两点： 
+
+    - 将动态的 `data` 定义为类型不定的变量就好，`var`、`dynamic`、`Object` 或者 `范型` 都可以。
+
+    - 传入 `data` 对应的数据类解析函数，这个插件会自动生成。  
+
+2. 使用插件生成 `data` 部分的数据类
+
+    参考章节： [数据类]()  
+    
+3. 使用
+    
+    - 解析普通数据类  
+        
+        ```
+        // 传入 fromMap 函数
+        Response responseData = Response.parse(responseBody, NewsData.fromMap);
+        NewsData data = responseData.result.data;
+        ```
+        
+    - 解析List类型的数据类
+    
+        ```
+        // 传入 List 的 fromMapList 函数
+        Response responseData = Response.parse(responseBody, NewsData.fromMapList);
+        List<NewsData> data = responseData.result.data;
+        ```
+
