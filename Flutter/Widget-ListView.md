@@ -1,4 +1,4 @@
-List 被用于展示列表数据。  
+ListView 被用于展示列表数据。  
 
 # 1.创建 ListView  
 
