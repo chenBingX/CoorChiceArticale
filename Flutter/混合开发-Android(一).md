@@ -1,0 +1,121 @@
+对于大部分团队来说，使用 Flutter 更希望能够和现有的项目相结合，一点点的切换。  
+
+而不是从头用 Flutter 把整个项目重写一遍，那样成本就太高了。  
+
+Flutter 目前能够支持和原生 Android 进行混合开发，接下来就看看如何在现有的原生 Android 应用中加入 Flutter 吧。  
+
+# 1.准备 Flutter Module
+
+通常，你可能存在两种情况：  
+
+    1. 还没有 Flutter 项目
+    2. 有现成的 Flutter 项目
+    
+现在，来看看如何处理这些情况吧。  
+
+## 1.1 没有 Flutter 项目
+
+这种情况只需要从头开始创建一个 **Flutter Module** 就行。  
+
+你可以选择任何目录（这里选择和现有原生 Android 项目同级的目录），创建一个 **Flutter Module**：  
+
+```
+$ cd <现有的原生 Android 项目同级的目录>
+$ flutter create -t module my_flutter
+```
+
+这样一个 **Flutter Module** 就创建好了。  
+
+当然，你也可以通过 Android Studio 的 `File > New > New Flutter Projects..` 打开如下弹窗：  
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/newfluttermoddule.png)
+
+选择 **Flutter Module**，然后选择下一步。  
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/newfluttermoddule2.png)
+
+配置好 Module 信息（注意路径），然后点击 **Finish**，一个新的 **Flutter Module** 就创建完成了。
+
+## 2.2 有现成的 Flutter 项目
+
+如果你已经有一个现成的 Flutter 项目，只需要稍作改动，把它变成一个 **Flutter Module** 即可。  
+
+打开 `pubspec.yaml` 文件：  
+
+```
+name: flutter_app
+description: A new Flutter module.
+---改为如下内容：---
+name: flutter_app
+description: A new Flutter application.
+
+
+flutter:
+    ---新增如下内容：---
+    module:
+      androidPackage: <包名>
+      iosBundleIdentifier: <包名>
+```
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/getpackage.png)  
+
+点击 **Packages get** 触发刷新一下就好了。  
+
+# 2. 将 Flutter Module 引入原生项目
+
+首先，先编译出一个 Flutter Module 的 `.aar` 包备用。   
+
+```
+// 进入你 Flutter Module 项目中的 .android 目录下
+$ cd .android/
+// 编出 .aar 包
+$ ./gradlew flutter:assembleDebug
+```
+
+编好后，你能够在 `.android/Flutter/build/outputs/aar/` 中找到 `.aar` 包。  
+
+接着，需要配置原生Android项目的主 module （一般名叫 app）的 `build.gradle`。 
+
+```
+android{
+    ... 
+     
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    
+    // 客户端通常要 armeabi-v7a 就好
+    ndk {
+        abiFilters "armeabi-v7a"
+    }
+
+    ...
+}
+
+
+dependencies {
+  ...
+  implementation project(':flutter')
+  ...
+}
+
+```
+
+然后，需要到项目根目录下的 `setting.gradle` 中增加如下配置：  
+
+```
+include ':app'  
+     
+---以下是新增：---  
+                            
+setBinding(new Binding([gradle: this])) 
+
+// 以下需要根据你的 FlutterModule 的实际目录来配置，最终需要的路径是 FlutterModule 项目里的 .android/include_flutter.groovy                            
+evaluate(new File(                                                      
+  settingsDir.parentFile,                                               
+  'flutter_module/.android/include_flutter.groovy'                          
+))    
+```
+
+刷新一下项目，就将 Flutter 引入到项目中了。

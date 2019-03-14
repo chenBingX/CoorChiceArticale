@@ -1,0 +1,92 @@
+在 [混合开发-Android(一)]() 中，我们成功的在原生 Android 项目中引入了 Flutter，本篇看看如何让 Flutter 在原生 Android 应用中运行起来。  
+
+# 1. 改造 main.dart
+
+首先，要让 Flutter 的视图能展示，需要改造一下 `main.dart` ，使用 name 的方式来创建对应的 Widget。  
+
+```
+import 'dart:ui';
+import 'package:flutter/material.dart';
+
+void main() => runApp(_widgetForRoute(window.defaultRouteName));
+
+Widget _widgetForRoute(String route) {
+  switch (route) {
+    case 'route1':
+      return SomeWidget(...);
+    case 'route2':
+      return SomeOtherWidget(...);
+    default:
+      return Center(
+        child: Text('Unknown route: $route', textDirection: TextDirection.ltr),
+      );
+  }
+}
+```
+
+# 2. 创建 FlutterView
+
+Flutter 使用 FlutterView 来作为一个容器，显示 Flutter 的视图。  
+
+FlutterView 实际上是一个 SurfaceView （这是个坑比较多的 View），Flutter 将绘制内容直接绘制到 SurfaceView 上。  
+
+性能理论上来说，比 Android 提供的原生 View 肯定会高。  
+
+看看如何创建一个 FlutterView 吧：  
+
+```
+FlutterView flutterView = Flutter.createView(
+   activity,
+   getLifecycle(),
+   "route0"
+);
+```
+
+需要注意的是，在创建 FlutterView 的时候，需要提供一个 Lifecycle，用于监听 Activity 的生命周期。  
+
+FlutterView 作为一个 SurfaceView 的子类，它也是一个 View。  
+
+因此，你可以将它设置的足够大，用来作为一个页面。  
+
+也可以根据需要，直接插入到现有 ViewTree 的任何一个节点。  
+
+灵活性还是很高的，就像使用一个原生的View一样使用它就好了。  
+
+下面的 **gif** 就是一个由原生 Android 应用跳转到 Flutter 页面的例子：  
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/混合开发demo.gif)  
+
+# 3. 继续使用 Hot-Reload
+
+你可能会担心，和原生的Android混合开发了之后，Hot-Reload 会不会不能用了？  
+
+当然不会！你仍然可以继续享用 Hot-Reload 带来的良好编译开发体验。  
+
+```
+// 进入你的 FlutterModule 目录
+$ cd some/path/my_flutter
+// 运行 attach
+$ flutter attach
+Waiting for a connection from Flutter on Nexus 5X...
+```
+
+接着，在设备上启动你的项目，然后进入到使用了 Flutter 的页面，控制台就会出现以下信息：
+
+```
+Done.
+Syncing files to device Nexus 5X...                          5.1s
+
+🔥  To hot reload changes while running, press "r". To hot restart (and rebuild state), press "R".
+An Observatory debugger and profiler on Nexus 5X is available at: http://127.0.0.1:59556/
+For a more detailed help message, press "h". To quit, press "q".
+```
+
+现在，当你在 FlutterModule 中有任何的修改，只需要按下 `r` 就能看到变化。 
+
+在这种环境下，你可以有以下几种操作：   
+
+|命令|功能|
+|---|---|
+|r|reload（热重载）|
+|R|restart（热重启）|
+|q|退出|
