@@ -24,13 +24,17 @@ Widget _widgetForRoute(String route) {
 }
 ```
 
+在上面的例子中，通过 window 对象获取了 `defaultRouteName`，这个值是由原生 Android 传递过来的。
+
+在 Flutter 中，Window 是平台用户界面的抽象，其中包含了平台的属性。
+
 # 2. 创建 FlutterView
 
-Flutter 使用 FlutterView 来作为一个容器，显示 Flutter 的视图。  
+Flutter 使用 FlutterView 来作为容器，显示 Flutter 的视图。
 
-FlutterView 实际上是一个 SurfaceView （这是个坑比较多的 View），Flutter 将绘制内容直接绘制到 SurfaceView 上。  
+FlutterView 实际上是一个 **SurfaceView** （这是个坑比较多的 View），Flutter 会将内容直接绘制到 SurfaceView 上。
 
-性能理论上来说，比 Android 提供的原生 View 肯定会高。  
+性能理论上来说，比 Android 提供的原生 View 肯定会高。
 
 看看如何创建一个 FlutterView 吧：  
 
@@ -42,15 +46,30 @@ FlutterView flutterView = Flutter.createView(
 );
 ```
 
-需要注意的是，在创建 FlutterView 的时候，需要提供一个 Lifecycle，用于监听 Activity 的生命周期。  
+喔，它看起来很简单。
 
-FlutterView 作为一个 SurfaceView 的子类，它也是一个 View。  
+最后一个参数 `route0` 就对应着前面所说的 `window.defaultRouteName` 的值了。
+
+需要注意的是，在创建 FlutterView 的时候，需要提供一个 **Lifecycle**，用于监听 Activity 的生命周期。
+
+因此，你可以直接使用 **AppCompatActivity**，它已经包含了一个 `Lifecycle` 实例。
+
+或者，你可以自己创建一个 `Lifecycle`，就像下面这样：
+
+```
+public class SupportActivity extends Activity implements LifecycleOwner {
+
+  private LifecycleRegistry lifecycle = new LifecycleRegistry(this);
+}
+```
+
+FlutterView 作为一个 **SurfaceView** 的子类，它也是一个 View。
 
 因此，你可以将它设置的足够大，用来作为一个页面。  
 
-也可以根据需要，直接插入到现有 ViewTree 的任何一个节点。  
+也可以根据需要，直接插入到现有 ViewTree 的任何一个节点，作为 Android 原生页面中的一个 View。
 
-灵活性还是很高的，就像使用一个原生的View一样使用它就好了。  
+灵活性还是很高的，总之就像使用一个原生的View一样使用它就好了。
 
 下面的 **gif** 就是一个由原生 Android 应用跳转到 Flutter 页面的例子：  
 
