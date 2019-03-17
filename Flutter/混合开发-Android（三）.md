@@ -6,10 +6,122 @@
 
 因为 Flutter 作为独立于原生 Android 的一套开发框架，肯定是不能直接互相调用和愉快的交换信息的。
 
-现在，来看看官方是如何解决这些问题的。
+现在，来看看 Flutter 是如何解决这些问题的。  
 
-# 1.Flutter to 原生
 
+# 1.Platform Channels
+
+Flutter 使用 **Platform Channels** 架构来实现 Flutter 和 原生 之间的通信。  
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter通信1.png)  
+
+上图是其中 MethodChannel 的架构示意图，Flutter 可以通过 MethodChannel 异步的发送和接收信息。  
+
+MethodChannel 是经过封装的比较方便的通信方式，Flutter 官网的例子也是通过 MethodChannel 来实现的。  
+
+Platform Channels 仅允许以下几种的数据类型：  
+
+|Dart|Android|iOS|
+|---|---|---|
+|null|null|nil (NSNull when nested)|
+|bool|java.lang.Boolean|NSNumber numberWithBool|
+|int|java.lang.Integer|NSNumber numberWithInt|
+|int, if 32 bits not enough|java.lang.Long|NSNumber numberWithLong|
+|double|java.lang.Double|NSNumber numberWithDouble|
+|String|java.lang.String|NSString|
+|Uint8List|byte[]|FlutterStandardTypedData typedDataWithBytes|
+|Int32List|int[]|FlutterStandardTypedData typedDataWithInt32|
+|Int64List|long[]|FlutterStandardTypedData typedDataWithInt64|
+|Float64List|double[]|FlutterStandardTypedData typedDataWithFloat64|
+|List|java.util.ArrayList|NSArray|
+|Map|java.util.HashMap|NSDictionary|
+
+
+# 2.如何使用 MethodChannel 
+
+MethodChannel 通过特定的通道，来建立起 Flutter 和 Native 之间通信桥梁。  
+
+当然，我们需要在 Flutter 和 Native 两端都需要定义相同的通道。  
+
+## 2.1 第一步：定义通信通道
+
+- Flutter 端： 
+  
+  先导入 `import 'package:flutter/services.dart';` 包，然后创建一个 MethodChannel。
+  
+  ```dart
+  
+  const channel = MethodChannel('foo');
+
+  ```
+  
+- Native - Android 端：  
+
+  ```java
+  MethodChannel channel = new MethodChannel(flutterView, "foo");
+  ```
+
+- Native - iOS 端：  
+  
+  ```
+  let channel = FlutterMethodChannel(
+    name: "foo", binaryMessenger: flutterView)
+  ```
+  
+
+建立一个通信通道的方式很简单，只需要使用相同的名称（比如上面例子中的 `"foo"`）创建 **MethodChannel** 就行。  
+
+在一个大型的项目中。你可能会需要建立很多的通信通道，所以建议统一的管理这些通信通道。  
+
+## 2.2 Flutter to Native
+
+建立好通信通道，来看看如何让 Flutter 主动和 Native 通信。  
+
+- Flutter 端：
+
+  ```dart
+  final String greeting = await channel.invokeMethod('bar', 'world');
+  print(greeting);
+  ```
+  
+  通过 `invokeMethod(<标识>, <数据>)` 函数可以主动发起和 Native 的一次通信，且能够获得响应，允许的数据类型就是前面表格中列出的数据类型。  
+  
+  当然，为了不阻塞 UI，你需要在异步中进行。  
+  
+- Native - Android 端：
+  
+  ```java
+  channel.setMethodCallHandler((methodCall, result) -> {
+      if (methodCall.method.equals("bar")) {
+          result.success("success, " + methodCall.arguments);
+      }
+  });
+  ```
+  
+  在 Native 端，通过为 MethodChannel 设置一个处理器 **MethodCallHandler**。  
+  
+  当 Flutter 向 Native 发起通信时，能够回调处理器中的 `onMethodCall()` 函数。  
+  
+  在该回调中，能够通过 **MethodCall** 获取 Flutter 发送过来的信息，通过 **MethodChannel.Result** 来向 Flutter 发送响应结果。  
+  
+  
+- Native - iOS 端：
+  
+  
+  ```
+  channel.setMethodCallHandler {
+    (call: FlutterMethodCall, result: FlutterResult) -> Void in
+    switch (call.method) {
+    case "bar": result("Hello, \(call.arguments as! String)")
+    default: result(FlutterMethodNotImplemented)
+    }
+  }
+  ```
+  
+## 2.3 Native to Flutter
+
+
+  
 
 
 
