@@ -21,7 +21,7 @@
 
 # 关于这本指南？
 
-这本 **《Flutter快速上手指南》** 意在指引 **迪维勒普大陆上** 最勇敢的、无畏的、进取的、荣耀的..的勇士，展开全新的冒险。
+这本 **《Flutter快速上手指南》** 意在指引 **迪维勒普大陆上** 最勇敢的、无畏的、进取的、荣耀的..勇士，展开全新的冒险。
 
 在上手 Flutter 后，你将能够建造出跨 Android 、iOS 两大异界的战争机器。
 
@@ -53,87 +53,87 @@ Let's do it!
 
 ## 第一卷：古老的达特人语(Dart语言)
 
-[🚫1.Dart 是什么？]()
+[🚫1.Dart 是什么？](https://github.com/chenBingX)
 
-[🚫2.对象和变量]()
+[🚫2.对象和变量](https://github.com/chenBingX)
 
-[🚫3. 基本数据类型-数字]()
+[🚫3. 基本数据类型-数字](https://github.com/chenBingX)
 
-[🚫4. 基本数据类型-字符串]()
+[🚫4. 基本数据类型-字符串](https://github.com/chenBingX)
 
-[🚫5. 基本数据类型-布尔]()
+[🚫5. 基本数据类型-布尔](https://github.com/chenBingX)
 
-[🚫6. 基本数据类型-List]()
+[🚫6. 基本数据类型-List](https://github.com/chenBingX)
 
-[🚫7. 基本数据类型-Map]()
+[🚫7. 基本数据类型-Map](https://github.com/chenBingX)
 
-[🚫8. 函数]()
+[🚫8. 函数](https://github.com/chenBingX)
 
-[🚫9. 类]()
+[🚫9. 类](https://github.com/chenBingX)
 
-[🚫10. 类-继承和实现]()
+[🚫10. 类-继承和实现](https://github.com/chenBingX)
 
-[🚫11. 类-Mixin]()
+[🚫11. 类-Mixin](https://github.com/chenBingX)
 
-[🚫12. 导入包]()
+[🚫12. 导入包](https://github.com/chenBingX)
 
-[🚫13. 异步-async和await]()
+[🚫13. 异步-async和await](https://github.com/chenBingX)
 
-[🚫14. 异步-Future]()
+[🚫14. 异步-Future](https://github.com/chenBingX)
 
-[🚫15. 异步-Stream]()
+[🚫15. 异步-Stream](https://github.com/chenBingX)
 
 ## 第二卷：战争机器建造指南—Flutter
 
-[🚫1.什么是Flutter？]()
+[🚫1.什么是Flutter？](https://github.com/chenBingX)
 
-[🚫2.如何开始Flutter？]()
+[🚫2.如何开始Flutter？](https://github.com/chenBingX)
 
-[🚫3.启动第一个Flutter应用]()
+[🚫3.启动第一个Flutter应用](https://github.com/chenBingX)
 
-[🚫4.Flutter常用Widget]()
+[🚫4.Flutter常用Widget](https://github.com/chenBingX)
 
-[🚫5.如何相应交互事件(一)]()
+[🚫5.如何相应交互事件(一)](https://github.com/chenBingX)
 
-[🚫6.如何相应交互事件(二)]()
+[🚫6.如何相应交互事件(二)](https://github.com/chenBingX)
 
-[🚫7.如何相应交互事件(三)]()
+[🚫7.如何相应交互事件(三)](https://github.com/chenBingX)
 
-[🚫8.页面跳转]()
+[🚫8.页面跳转](https://github.com/chenBingX)
 
-[🚫9.页面跳转传参]()
+[🚫9.页面跳转传参](https://github.com/chenBingX)
 
-[🚫10.动画(一)]()
+[🚫10.动画(一)](https://github.com/chenBingX)
 
-[🚫11.动画(二)-插值器]()
+[🚫11.动画(二)-插值器](https://github.com/chenBingX)
 
-[🚫12.动画(三)-AnimatedWidget]()
+[🚫12.动画(三)-AnimatedWidget](https://github.com/chenBingX)
 
-[🚫13.动画(四)-页面跳转动画]()
+[🚫13.动画(四)-页面跳转动画](https://github.com/chenBingX)
 
-[🚫14.动画(五)-Hero]()
+[🚫14.动画(五)-Hero](https://github.com/chenBingX)
 
-[🚫15.添加三方包]()
+[🚫15.添加三方包](https://github.com/chenBingX)
 
-[🚫16.添加资源]()
+[🚫16.添加资源](https://github.com/chenBingX)
 
-[🚫17.数据类]()
+[🚫17.数据类](https://github.com/chenBingX)
 
-[🚫18.事件通知Notification]()
+[🚫18.事件通知Notification](https://github.com/chenBingX)
 
-[🚫19.网络请求-HttpClient]()
+[🚫19.网络请求-HttpClient](https://github.com/chenBingX)
 
-[🚫20.混合开发(一)]()
+[🚫20.混合开发(一)](https://github.com/chenBingX)
 
-[🚫21.混合开发(二)]()
+[🚫21.混合开发(二)](https://github.com/chenBingX)
 
-[🚫22.混合开发(三)]()
+[🚫22.混合开发(三)](https://github.com/chenBingX)
 
-[🚫插件-数据存储:path_provider]()
+[🚫插件-数据存储:path_provider](https://github.com/chenBingX)
 
-[🚫插件-数据存储:shared_preferences]()
+[🚫插件-数据存储:shared_preferences](https://github.com/chenBingX)
 
-[🚫附录：小技巧](1)
+[🚫附录：小技巧](https://github.com/chenBingX)
 
 
 这本指南还在动态更新中，不要点击前面有 🚫 的链接。
