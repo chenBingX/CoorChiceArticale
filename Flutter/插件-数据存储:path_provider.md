@@ -55,3 +55,11 @@ Future<File> _getExternalFile() async {
 }
 ```
 
+
+---
+
+> ### 如何找到我？
+
+> [**传送门：**CoorChice 的主页](https://juejin.im/user/57fc43b67db2a200595ffd94)
+
+> [**传送门：**CoorChice 的 Github](https://github.com/chenBingX)
