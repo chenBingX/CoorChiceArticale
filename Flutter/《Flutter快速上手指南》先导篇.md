@@ -5,7 +5,7 @@
 
 很高兴你能够在 **万维之海** 中，凭借着一身的本事，和最主要的运气找到了这本在 **迪维勒普大陆上** 遗失了 **数零万年** 之久的 **《Flutter快速上手指南》**。
 
-![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter快速上手指南封面2.JPG)
+[![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/Flutter快速上手指南封面2.JPG)](https://github.com/chenBingX)
 
 当你打开这本指南，你首先会看到你现在所看的这些文字。
 
