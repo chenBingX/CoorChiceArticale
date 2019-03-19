@@ -81,8 +81,6 @@ Let's do it!
 
 [🚫14. 异步-Future](https://github.com/chenBingX)
 
-[🚫15. 异步-Stream](https://github.com/chenBingX)
-
 ## 第二卷：战争机器建造指南—Flutter
 
 [🚫1.什么是Flutter？](https://github.com/chenBingX)
