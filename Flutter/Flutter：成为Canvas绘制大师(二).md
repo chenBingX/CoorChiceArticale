@@ -1,0 +1,179 @@
+接着上一篇 [《Flutter：成为Canvas绘制大师(一)》]()，本篇继续讲解 Canvas 中的常用绘制操作。
+
+## 绘制圆形drawCircle()
+
+绘制圆形。
+
+🌰 e.g.:
+
+```
+canvas.drawCircle(Offset(size.width / 2, size.height / 2), 100, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/circlefill.png)
+
+设置空心效果 `paint..style=PaintingStyle.stroke` 。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/circlestroke.png)
+
+## 绘制椭圆形drawOval()
+
+需要提供一个 Rect，绘制的是 Rect 的内接矩形。
+
+🌰 e.g.:
+
+```
+Rect rect = Rect.fromLTRB(size.width / 2 - 100, size.height / 2 - 50,
+    size.width / 2 + 100, size.height / 2 + 50);
+canvas.drawOval(rect, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/ovalfill.png)
+
+设置空心效果 `paint..style=PaintingStyle.stroke` 。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/ovalstroke.png)
+
+## 绘制圆弧drawArc()
+
+绘制圆弧需要提供一个 Rect，圆弧相当于是 Rect 的内接椭圆上的一段。
+
+看下这个函数所需的参数：
+
+|参数|类型|说明|
+|---|---|---|
+|rect|Rect|圆弧所在椭圆的外接矩形|
+|startAngle|double|起始位置的弧度。弧度制|
+|sweepAngle|double|设置圆弧扫过多少弧度。弧度制|
+|useCenter|bool|表示是否链接到圆弧所在椭圆的中心|
+|paint|Paint|画笔|
+
+
+🌰 e.g.:
+
+```
+Rect rect = Rect.fromCircle(
+    center: Offset(size.width / 2, size.height / 2), radius: 140);
+canvas.drawArc(rect, 0, math.pi / 2, true, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/arcfalsestroke.png)
+
+> ⚠️ 注意，圆弧的 `startAngle` 和 `sweepAngle` 采用弧度制。参考：[**弧度制**](https://baike.baidu.com/item/%E5%BC%A7%E5%BA%A6%E5%88%B6)。
+如果你想要获得 `π` 值，可以通过 dart 的 math 包下的 `math.pi` 获取。
+
+下图是圆弧的0点示意图：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/arc0点.png)
+
+🖼 当 `useCenter=true` 的效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/arctruestroke.png)
+
+## 绘制阴影drawShadow()
+
+在 Flutter 中，使用该函数你可以很方便的绘制阴影。
+
+看看该函数的参数：
+
+|参数|类型|说明|
+|---|---|---|
+|path|Path|绘制阴影的路径|
+|color|Color|阴影的颜色|
+|elevation|double|阴影高度|
+|transparentOccluder|bool|是否透明封堵器。通常需要设置为true|
+
+
+🌰 e.g.:
+
+```
+Path path = Path()..addRect(rect.translate(20, 0));
+canvas.drawShadow(path, Colors.amberAccent, 20, true);
+```
+
+你看，绘制 Shadow 不需要 Paint。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/shadow.png)
+
+什么？看不出来有什么用？
+
+前面加个东西看看。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/shadowwith.png)
+
+看起来矩形漂浮起来了😱。
+
+
+# 绘制颜色drawColor()
+
+Flutter 中的 `drawColor()` 是个比较不容易理解的绘制操作。
+
+为什么呢？看看它的参数：
+
+|参数|类型|说明|
+|---|---|---|
+|color|Color|颜色|
+|blendMode|BlendMode|色值混合模式。与此前绘制的内容的混合。|
+
+主要就是因为第二个参数 `blendMode`。
+
+不同的值会有不同的表现。
+
+在进行混合的时候，有一个目标色值 **dst**（调用`drawColor()`之前已经绘制的内容）和一个源色值 **src**（就是第一个参数的色值）。
+
+混合就是，以不同的算法，根据 **dst** 和 **src** 计算出新的色值。
+
+
+🌰 e.g.:
+
+```
+canvas.drawColor(Colors.redAccent, BlendMode.src);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/src.png)
+
+由于在调用 `drawColor()` 之前没有绘制过内容，所以混合就是和背景进行的。
+
+可以看到，此时模式为 **BlendMode.src** 时，可以给整个画布上颜色。
+
+🖼 如果此前已经绘制了内容：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/dst.png)
+
+加上如下代码：
+
+```
+canvas.drawColor(Colors.redAccent, BlendMode.color);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/dstcolor.png)
+
+使用 **BlendMode.color**  模式就像给此前的绘制的内容加了滤镜 🤔。
+
+**BlendMode** 模式特别的多，可以参考官方的例子：[**BlendMode官方图解**](https://docs.flutter.io/flutter/dart-ui/BlendMode-class.html)
+
+
+
+
+
+
+
+

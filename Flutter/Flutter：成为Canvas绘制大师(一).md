@@ -1,0 +1,180 @@
+本篇会介绍一些 Flutter 中 Canvas 的常用绘制操作。
+
+# Canvas 的绘制坐标系
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/canvas坐标系.png)
+
+上图是 Canvas 绘制区域内的坐标系。
+
+原点在左上角，水平向右为 x 轴正方向，垂直向下为 y 轴正方向。
+
+# 常用绘制操作
+
+## 绘制线段drawLine()
+
+绘制线段。
+
+🌰 e.g.:
+
+```
+canvas.drawLine(Offset(10, 10), Offset(250, 250), paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/custompainter1.png)
+
+线段的宽度通过 `Paint.strokeWidth` 属性可以设置线段的宽度。
+
+
+## 绘制点drawPoints()
+
+绘制一系列的点，可以链接成线段。
+
+🌰 e.g.:
+
+```
+canvas.drawPoints(
+    ui.PointMode.points,
+    [Offset(200, 200), Offset(250, 250), Offset(50, 200), Offset(100, 250)],
+    paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/point方.png)
+
+默认情况下，点是方形的。
+
+如果想要绘制原点，只需要配置 `paint.strokeCap=StrokeCap.round` 即可。
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/point圆.png)
+
+🖼 效果：
+
+如果设置 `ui.PointMode.polygon`，这些点就会按照点数组顺序，从前往后的链接。
+
+```
+canvas.drawPoints(
+    ui.PointMode.polygon,
+    [Offset(200, 200), Offset(250, 250), Offset(50, 200), Offset(100, 250)],
+    paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/point线段.png)
+
+## 绘制路径drawPath()
+
+绘制一个路径。
+
+Path 有很多的方法去构建路径，这里不展开了，可以参考：[**Path API**](https://docs.flutter.io/flutter/dart-ui/Path-class.html)。
+
+🌰 e.g.:
+
+```
+Path path = Path();
+path.moveTo(100, 100);
+path.lineTo(200, 200);
+path.lineTo(250, 200);
+path.lineTo(200, 250);
+canvas.drawPath(path, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/path.png)
+
+闭合路径 `path.close()`。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/pathclose.png)
+
+设置填充效果 `paint..style=PaintingStyle.fill`。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/pathfill.png)
+
+## 绘制矩形drawRect()
+
+绘制矩形。
+
+你需要提供一个 **Rect**，当然创建 Rect 的方式也很多，可以参考：[**Rect API**](https://docs.flutter.io/flutter/dart-ui/Rect-class.html)。
+
+🌰 e.g.:
+
+```
+ Rect rect = Rect.fromCircle(
+     center: Offset(size.width / 2, size.height / 2), radius: 100);
+ canvas.drawRect(rect, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/rectstroke.png)
+
+设置填充效果 `paint..style=PaintingStyle.fill`。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/rectfill.png)
+
+## 绘制圆角矩形drawRRect()
+
+绘制圆角矩形。
+
+你需要提供一个 **RRect**，当然创建 RRect 的方式也很多，可以参考：[**RRect API**](https://docs.flutter.io/flutter/dart-ui/RRect-class.html)。
+
+你也可以用这个方法来实现 `drawRect()` 的效果，只要把圆角设为 0。
+
+🌰 e.g.:
+
+```
+Rect rect1 = Rect.fromCircle(
+    center: Offset(size.width / 2, size.height / 2), radius: 150);
+RRect rRect = RRect.fromRectAndRadius(rect1, Radius.circular(20));
+canvas.drawRRect(rRect, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/rrect.png)
+
+## 绘制嵌套圆角矩形drawDRRect()
+
+绘制嵌套的圆角矩形。
+
+⚠️ 第一个参数 outer 必须比第二个参数 inner 要大，否则就不显示了。
+
+🌰 e.g.:
+
+```
+Rect rect1 = Rect.fromCircle(
+    center: Offset(size.width / 2, size.height / 2), radius: 140);
+Rect rect2 = Rect.fromCircle(
+    center: Offset(size.width / 2, size.height / 2), radius: 160);
+RRect rRect1 = RRect.fromRectAndRadius(rect1, Radius.circular(20));
+RRect rRect2 = RRect.fromRectAndRadius(rect2, Radius.circular(20));
+canvas.drawDRRect(rRect2, rRect1, paint);
+```
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/drectstroke.png)
+
+
+设置填充效果 `paint..style=PaintingStyle.fill`。
+
+🖼 效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/drectfill.png)
+
+好了，本篇就到这了。
+
+你可以花些时间编写一下这些代码，运行起来感受下效果。
+
+想要学习的更多，请看下一篇。
+

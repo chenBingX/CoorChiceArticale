@@ -1,7 +1,20 @@
 
+到目前为止，Flutter 已经提供了 30 多种不同的 Widget 用于组合构建视图。
+
+但对于一些复杂的视图，用 SDK 提供的这些 Widget 仍然无法组合出来 🙃 。
+
+我们必须自己绘制这些视图，就像在 Android 中使用 Canvas 和 Paint 来进行绘制那样 🥳 。
+
+在 Flutter 中，当然也有可以让你自由绘制的方案，他就是 **CustomPaint**。
 
 
-# CustomPaint 的常用属性
+# CustomPaint
+
+CustomPaint 也是一个 Widget。
+
+你可把它嵌到视图树的任意一个节点位置。
+
+先看看它的常用属性：
 
 |属性|类型|说明|
 |---|---|---|
@@ -11,3 +24,135 @@
 |isComplex|bool|是否复杂的绘制，如果是，Flutter会应用一些缓存策略来减少重复渲染的开销。默认false|
 |willChange|bool|和isComplex配合使用，当启用缓存时，该属性代表在下一帧中绘制是否会改变。默认false|
 |child|Widget|没错，CustomPaint是可以包含一个子节点的|
+
+从 CustomPaint 的属性可以看出，实际绘制是通过 **CustomPainter** 来完成的。
+
+以 child 为基准，**CustomPainter** 分为两个部分，一个是绘制在 child 上面的 `pinter`，一个是绘制在 child 下面的 `foregroundPainter`。
+
+🌰 看个例子：
+
+```
+CustomPaint(
+    isComplex: true,
+    willChange: true,
+    size: Size(deviceSize.width, deviceSize.height),
+    painter: GamePainter(background, maliao, position),
+    foregroundPainter: ForegroundGamePainter(),
+  )
+```
+
+# 马良神笔 CustomPainter
+
+**CustomPainter** 是一个抽象类，你需要继承它实现自己的逻辑。
+
+```
+class MyPainter extends CustomPainter {
+
+  @override
+  paint(Canvas canvas, Size size)  {
+    ...
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
+  }
+}
+```
+
+继承 **CustomPainter** 最重要的是实现 `paint(Canvas canvas, Size size)` 和 `shouldRepaint(CustomPainter oldDelegate)` 这两个函数。
+
+- `paint()` 中是绘制逻辑，可以在这获得画布 **Canvas** 和 画布的大小 **Size**。
+
+- `shouldRepaint()` 返回 true 才会进行重绘，否则就只会绘制一次。你可以通过一些条件判断来决定是否每次绘制，这样能够节约系统资源。
+
+实现 **CustomPainter** 最重要的就是在 `paint()` 中写绘制逻辑。
+
+🌰 一个例子：
+
+```
+class MyPainter extends CustomPainter {
+  @override
+  void paint(ui.Canvas canvas, ui.Size size) {
+    Paint paint = Paint()
+      ..isAntiAlias = true
+      ..color = Colors.blueAccent
+      ..strokeWidth = 10
+      ..style = PaintingStyle.fill;
+
+    canvas.drawLine(Offset(10, 10), Offset(250, 250), paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
+  }
+}
+```
+
+🖼 看看效果：
+
+![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/custompainter1.png)
+
+在绘制过程中，有两个重要的角色：**Paint** 和 **Canvas**。
+
+## Paint
+
+Paint 是画笔，在 **Canvas** 上作画就是依靠它去 "执行" 的。
+
+看看 Paint 有那些常用属性：
+
+|属性|类型|说明|
+|---|---|---|
+|isAntiAlias|bool|是否开启抗锯齿，开启抗锯齿能够是边缘平滑，当然也更消耗系统资源|
+|color|Color|颜色|
+|colorFilter|ColorFilter|会对颜色进行变换|
+|filterQuality|FilterQuality|设置绘制的图像质量|
+|invertColors|bool|是否使用反向颜色。绘制图片时也能够反转图片的颜色|
+|maskFilter|MaskFilter|设置遮罩效果。比如高斯模糊|
+|shader|Shader|渐变颜色。会覆盖color|
+|strokeCap|StrokeCap|设置绘制形状的边缘风格。如圆角、方形等|
+|strokeJoin|StrokeJoin|设置两个绘制形状衔接处的风格。如圆角、方形等|
+|strokeWidth|double|画笔的宽度|
+|style|PaintingStyle|填充方式。PaintingStyle.fill-充满；PaintingStyle.stroke-空心|
+|blendMode|BlendMode|像素混合模式。当画一个shape或者合成图层的时候会生效。|
+
+以上就是 Paint 常用的属性，你可以都试试看看效果。
+
+这是一段 Paint 的配置代码：
+
+```
+Paint paint = Paint()
+  ..isAntiAlias = true
+  ..color = Colors.redAccent
+  ..strokeWidth = 10
+  ..style = PaintingStyle.fill
+  ..filterQuality = FilterQuality.high
+  ..strokeCap = StrokeCap.round
+  ..strokeJoin = StrokeJoin.round
+  ..maskFilter = MaskFilter.blur(BlurStyle.normal, 50)
+  ..invertColors = false
+  ..blendMode = BlendMode.color
+  ..shader = ui.Gradient.linear(
+      Offset(0, 0), Offset(100, 100), [Colors.red, Colors.blueAccent])
+```
+
+## Canvas
+
+**Canvas** 作为画布，它和在 Android 使用的 Canvas 在很多接口上很像。
+
+它包含了很多基础的绘制操作，通过组合这些基础的绘制操作，可以绘制出几乎任何的视图。
+
+Canvas 的操作主要有两类：
+
+- 针对 Canvas 的变换操作，如平移、旋转、缩放、图层等操作。
+
+- 绘制基础图形的操作，如线段、路径、图片、几何图形等。
+
+Canvas 的这些操作后续再详细讲解 😉。
+
+
+
+
+
+
