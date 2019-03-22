@@ -131,6 +131,14 @@ Let's do it!
 
 [🚫22.混合开发(三)](https://github.com/chenBingX)
 
+[🚫23.使用CustomPainter构建酷炫的Widget](https://github.com/chenBingX)
+
+[🚫24.成为绘制大师(一)](https://github.com/chenBingX)
+
+[🚫25.成为绘制大师(二)](https://github.com/chenBingX)
+
+[🚫26.成为绘制大师(三)](https://github.com/chenBingX)
+
 [🚫插件-数据存储:path_provider](https://github.com/chenBingX)
 
 [🚫插件-数据存储:shared_preferences](https://github.com/chenBingX)
