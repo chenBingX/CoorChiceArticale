@@ -143,6 +143,8 @@ Let's do it!
 
 [🚫28.成为绘制大师(四)](https://github.com/chenBingX)
 
+[29.Flutter与原生解耦式混合开发](https://github.com/chenBingX)
+
 [🚫插件-数据存储:path_provider](https://github.com/chenBingX)
 
 [🚫插件-数据存储:shared_preferences](https://github.com/chenBingX)
