@@ -98,7 +98,100 @@ console.log(window.a)
 
 可以通过 `//` 或者 `/* */`
 
+
 # 其它
+
+## typeof
+
+检测变量的类型。
+
+```
+typeof "John"                // 返回 string
+typeof 3.14                  // 返回 number
+typeof false                 // 返回 boolean
+typeof [1,2,3,4]             // 返回 object
+typeof {name:'John', age:34} // 返回 object
+```
+
+## 类型转换
+
+### 转换为字符串
+
+```
+String(x)         // 将变量 x 转换为字符串并返回
+String(123)       // 将数字 123 转换为字符串并返回
+String(100 + 23)  // 将数字表达式转换为字符串并返回
+
+
+// 或者
+x.toString()
+(123).toString()
+(100 + 23).toString()
+```
+
+## 寻找字符串
+
+```
+var str = "Visit Runoob!";
+var n = str.search("Runoob");
+
+---
+6
+```
+
+## 替换字符串
+
+```
+var str = document.getElementById("demo").innerHTML;
+var txt = str.replace("Microsoft","Runoob");
+```
+
+## test() 检测是否符合正则
+
+```
+var patt = /e/;
+patt.test("The best things in life are free!");
+```
+
+## 严格模式
+
+在严格模式下，不能使用未声明的变量。
+
+```
+x = 3.14 // 错误的书写方式
+
+
+---正确---
+
+var x = 3.14
+```
+
+如何开启严格模式？
+
+在 JavaScript 1.8.5 及以上版本中，在文件头部增加：
+
+```
+"use strict"
+```
+
+# this
+1. 单独的this指全局的 window 对象。
+
+```
+var x = this;
+// this就是window对象
+``
+
+
+2. 事件中的 this 指接收事件的元素：
+
+```
+<button onclick="this.style.display='none'">
+点我后我就消失了
+</button>
+```
+
+3. 对象中的 this 指对象本身。
 
 **循环、运算符号、条件句、异常** 等和 Java 句法一样。
 
