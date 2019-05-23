@@ -74,6 +74,24 @@ HTML 是一种描述网页的标记语言。
 文档中 `<h1>` 标签文字会变成 red，`<p>` 标签会变为 blue。
 
 
+## `<meta>`
+
+meta 标签用于描述一些基本的元数据。
+
+如：
+
+```
+<!-- 定义网页内容 -->
+<meta name="description" content="Allspark Demo">
+
+<!-- 定义作者 -->
+<meta name="author" content="CoorChice">
+```
+
+## `<script>`
+
+用于加载 js 脚本，或者插入一段 js。
+
 ## 标题标签 `<h1> - <h6>`
 
 数字越大，字体越小。
