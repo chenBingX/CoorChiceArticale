@@ -14,9 +14,10 @@ HTML 是一种描述网页的标记语言。
 
 # 常用标签
 
+
 ## 头部标签 `<head>`
 
-在 `<head>` 标签中，可以插入脚本，css文件以及各种 meta 信息。
+在 `<head>` 标签中，可以插入脚本，css文件以及各种 `meta` 信息。
 
 ## `<title>`
 
@@ -46,7 +47,7 @@ HTML 是一种描述网页的标记语言。
 
 ```
 <head>
-<link rel="stylesheet" type="text/css" href="theme.css">
+    <link rel="stylesheet" type="text/css" href="theme.css">
 </head>
 ```
 
@@ -64,10 +65,10 @@ HTML 是一种描述网页的标记语言。
 
 ```
 <head>
-<style type="text/css">
-    h1 {color:red;}
-    p {color:blue;}
-</style>
+    <style type="text/css">
+        h1 {color:red;}
+        p {color:blue;}
+    </style>
 </head>
 ```
 
@@ -86,11 +87,34 @@ meta 标签用于描述一些基本的元数据。
 
 <!-- 定义作者 -->
 <meta name="author" content="CoorChice">
+
+<!-- 定义字符集 -->
+<meta charset="UTF-8">
+
 ```
 
 ## `<script>`
 
 用于加载 js 脚本，或者插入一段 js。
+
+```
+<script>
+function myFunction() {
+    var x, text;
+
+    // 获取 id="numb" 的值
+    x = document.getElementById("numb").value;
+
+    // 如果输入的值 x 不是数字或者小于 1 或者大于 10，则提示错误 Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 1 || x > 10) {
+        text = "输入错误";
+    } else {
+        text = "输入正确";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+</script>
+```
 
 ## 标题标签 `<h1> - <h6>`
 
@@ -156,7 +180,7 @@ meta 标签用于描述一些基本的元数据。
 
 
 <!-- 图片链接 -->
-<a href=""链接>
+<a href="链接">
 <img border="0" src="图片" alt="HTML 教程" width="28" height="28"></a>
 
 
