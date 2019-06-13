@@ -136,6 +136,18 @@ function myFunction() {
 
 通过 `<\br>` 可以换行。
 
+## `<span>`
+
+用于组合文档中。
+
+```
+<p>下面要标重点了 <span style="color:red">重点</span>！</p>
+```
+
+效果：
+
+<p>下面要标重点了 <span style="color:red">重点</span>！</p>
+
 ## 文本相关标签
 
 ### 加粗
@@ -165,12 +177,62 @@ function myFunction() {
 <sup>上标</sup>
 ```
 
+下标效果：
+
+log<sub>2</sub>X
+
+上标效果：
+
+x<sup>2</sup>
+
+
+
+
 ## 图像 `<img>`
 
 ```
 <img src="/images/logo.png" width="258" height="39" />
 ```
 
+`<img>` 标签有一个 **atl** 属性，当图片无法载入时，会展示 **alt** 定义的文本内容，如：
+
+```
+<img src="http://www.example.com/imgs/img01.png" alt="这是一个错误的图片链接" width="200" height="200"/>
+```
+
+<img src="http://www.example.com/imgs/img01.png" alt="这是一个错误的图片链接" width="200" height="200"/>
+
+`<img>` 标签又一个 **usemap** 属性，可以配置图片区域的点击映射：
+
+```
+<img src="https://www.runoob.com/try/demo_source/planets.gif" width="145" height="126" alt="图片地址不可用了！" usemap="#planetmap">
+
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="https://www.runoob.com/try/demo_source/sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="https://www.runoob.com/try/demo_source/mercur.htm">
+  <area shape="circle" coords="124,58,8" alt="Venus" href="https://www.runoob.com/try/demo_source/venus.htm">
+</map>
+```
+
+<img src="https://www.runoob.com/try/demo_source/planets.gif" width="145" height="126" alt="图片地址不可用了！" usemap="#planetmap">
+
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="https://www.runoob.com/try/demo_source/sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="https://www.runoob.com/try/demo_source/mercur.htm">
+  <area shape="circle" coords="124,58,8" alt="Venus" href="https://www.runoob.com/try/demo_source/venus.htm">
+</map>
+
+**usemap** 属性通过 `# + 一个map的name`，就可以和一个定一个点击区域，以及跳转链接的 map 建立联系。
+
+在 `<map>` 中，使用 `<area>` 标签来描述一个可点击区域。
+
+`<area>` 的重要属性：
+
+|属性|说明|
+|---|---|
+|shape|形状。rect、circle。|
+|coords|坐标。不同的形状对应的坐标格式不同。|
+|href|链接 URL。|
 
 ## 链接 `<a>`
 
@@ -178,10 +240,10 @@ function myFunction() {
 <a href="链接">这是一个链接</a>
 
 
-
 <!-- 图片链接 -->
 <a href="链接">
-<img border="0" src="图片" alt="HTML 教程" width="28" height="28"></a>
+    <img border="0" src="图片" alt="HTML 教程" width="28" height="28">
+</a>
 
 
 <!-- 跳转到文档指定元素位置 -->
@@ -190,3 +252,4 @@ function myFunction() {
 
 跳转链接放到属性 `href` 中。
 
+> [关于更多的 `<link>` 标签说明，点击这里](https://raw.githubusercontent.com/chenBingX/CoorChiceArticale/master/web开发/html/HTML之link标签.md)。

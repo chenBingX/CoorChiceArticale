@@ -1,0 +1,58 @@
+
+
+在 HTML 中的几乎每个元素，都可以为它们配置背景样式。
+
+背景常用的配置项：
+
+```
+background-color: 背景颜色
+
+background-image: 背景图片。如 background-image:url('图片地址')
+background-position: 背景图片的位置
+background-repeat: 背景图片的重复模式。可以 水平重复 repeat-x；垂直重复 repeat-y。默认为 repeat-y。如果不需要就设置 no-repeat。
+background-attachment: 背景图片是否随页面滚动。scroll-跟随滚动；fixed-固定
+
+```
+
+下面的例子，会将页面变为红色背景：
+
+```
+<style>
+body
+{
+background-color:red;
+}
+</style>
+```
+
+下面的例子，会给页面添加图片背景，并且水平重复：
+
+```
+<style>
+body
+{
+background-image:url('https://www.runoob.com/try/demo_source/gradient2.png');
+background-repeat:repeat-x;
+}
+</style>
+```
+
+这个例子将所有的 `<p>` 标签背景配置为图片：
+
+```
+<style>
+p
+{
+background-image:url('https://www.runoob.com/try/demo_source/gradient2.png');
+background-repeat:repeat-x;
+}
+</style>
+
+<p>看看变没变？</p>
+```
+
+<iframe height="500px" width="500px" src="/cssbackgrounddemo.html" >
+</iframe>
+
+
+就像你现在看到的这样。

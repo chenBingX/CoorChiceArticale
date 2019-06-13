@@ -1,0 +1,79 @@
+
+# 什么是 CSS？
+
+
+CSS 相当于是一个定义了 HTML 中各种标签元素样式的一个清单文件（样式表）。
+
+通过 CSS 可以将 HTML 中的元素样式分离开来，单独放到 `.css` 文件中，这样就能使得 HTML 仅仅专注于定义文档内容。
+
+同时，定义在 `.css` 文件中的样式，是可以被复用的；对于 HTML 文档而言，它又可以随时整体的切换样式，而不需要对 HTML 文档进行修改。
+
+# CSS 是如何协同 HTML 工作的？
+
+首先了解一下 CSS 的格式：
+
+```
+选择器 {属性1: 值1; 属性2: 值2;}
+```
+
+例如：
+
+```
+p
+{
+color:red;
+text-align:center;
+}
+```
+
+上面的代码，定义 `<p>` 标签的样式。
+
+
+## id 和 class 选择器
+
+除了上面例子中出现的标签选择器，css 还支持 id 选择器和 class 选择器。
+
+**id 选择器**就是将样式绑定到一个特定的 id 上，HTML 中使用这个 id 的元素会使用这个样式。
+
+**id 选择器** 使用 `# + id值` 来开始定义，比如：
+
+```
+#id1
+{
+text-align: center;
+}
+
+<p id="id1">这个标签使用id1选择器对应的样式</p>
+```
+
+> 注，id不能以数字开头。
+
+**class 选择器**就是定义了一个类型的样式，在 HTML 中，所有使用这个类型的元素，都使用这个样式。
+
+**class 选择器**的定义格式：
+
+1.`.+class名`，所有使用该 class 的元素都会使用该样式：
+
+```
+.center
+{
+text-align: center;
+}
+
+<p class="center">p元素使用了class</p>
+<div class="center">
+</div>
+```
+
+2.`元素名.+class名`，你可以在最前面加上标签限制，这样同样的类型，只有指定的标签才会应用这些样式：
+
+```
+p.center
+{
+text-align: center;
+}
+
+<p class="center">class为center的p元素会受到影响</p>
+<h1 class="center">class为center的h1元素不会受到影响</p>
+```
+
