@@ -76,4 +76,23 @@ text-align: center;
 <p class="center">class为center的p元素会受到影响</p>
 <h1 class="center">class为center的h1元素不会受到影响</p>
 ```
+# 分组选择器
 
+```
+h1, h2, p
+{
+    color:blue;
+}
+```
+
+几个相同的样式，可以合并在一起，就像上面那样。
+
+# 嵌套选择器
+
+- `p {}`：为所有 p 元素设置样式。
+
+- `.one {}`：为所有使用了 `class="one" 的元素设置样式。
+
+- `.one p {}`：为所有使用了 `class="one"` 中的 p 元素设置样式。
+
+- `p.one {}`：为所有使用了 `class="one"` 的 p 元素设置样式。

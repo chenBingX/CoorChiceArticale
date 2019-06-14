@@ -51,8 +51,27 @@ background-repeat:repeat-x;
 <p>看看变没变？</p>
 ```
 
-<iframe height="500px" width="500px" src="/cssbackgrounddemo.html" >
+效果如下：
+
+<iframe height="50px" seamless frameborder="1" srcdoc="
+<style>
+p
+{
+background-image:url('https://www.runoob.com/try/demo_source/gradient2.png');
+background-repeat:repeat-x;
+}
+</style>
+<p>看看变没变？</p>
+">
 </iframe>
 
+设置背景样式，还可以通过 **background** 属性，这样就可以不用细分每个属性了，可以写到一起：
 
-就像你现在看到的这样。
+```
+<style>
+body
+{
+ background:pink url('https://www.runoob.com/try/demo_source/gradient2.png' no-repeat right top);
+}
+</style>
+```
