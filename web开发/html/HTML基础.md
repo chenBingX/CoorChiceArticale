@@ -252,4 +252,9 @@ x<sup>2</sup>
 
 跳转链接放到属性 `href` 中。
 
+`<a>` 又一个 **target** 属性，这个属性用于描述如何打开链接：
+
+- _blank：在新窗口中打开
+
+
 > [关于更多的 `<link>` 标签说明，点击这里](https://raw.githubusercontent.com/chenBingX/CoorChiceArticale/master/web开发/html/HTML之link标签.md)。
