@@ -120,6 +120,30 @@ h1, h2, p
 对所有包含了 `title` 属性，并且值为 demo 的元素都有效。
 
 
+# 为元素添加多个属性
+
+```
+<div class="css1 css2 css3">
+
+</div>
+```
+
+元素可以添加多个配置，只需要用空格分隔。
+
+# 属性兼容
+
+很多 css 属性为了兼容，需要在属性名前增加标示：
+
+```
+box-sizing: border-box;
+
+// 为了兼容
+-webkit-box-sizing: border-box;
+```
+
+`-webkit-` 对应 Safari and Chrome
+
+
 > [更多 CSS 例子](https://www.runoob.com/css/css-examples.html)
 
 

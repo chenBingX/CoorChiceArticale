@@ -11,7 +11,7 @@ background-image: 背景图片。如 background-image:url('图片地址')
 background-position: 背景图片的位置
 background-repeat: 背景图片的重复模式。可以 水平重复 repeat-x；垂直重复 repeat-y。默认为 repeat-y。如果不需要就设置 no-repeat。
 background-attachment: 背景图片是否随页面滚动。scroll-跟随滚动；fixed-固定
-
+background-size: 背景图片大小。具体数值、auto（按图片比例缩放）、cover（按比例以最大边缩放）、contain（按比例以最小边缩放）
 ```
 
 下面的例子，会将页面变为红色背景：
@@ -74,4 +74,15 @@ body
  background:pink url('https://www.runoob.com/try/demo_source/gradient2.png' no-repeat right top);
 }
 </style>
+```
+
+# 背景图片如何居中？
+
+```
+div{
+    background-img: url("img.png");
+    // 背景图居中
+    background-position: center;
+
+}
 ```
