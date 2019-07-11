@@ -141,10 +141,20 @@ var n = str.search("Runoob");
 
 ## 替换字符串
 
+替换第一个：
+
 ```
 var str = document.getElementById("demo").innerHTML;
 var txt = str.replace("Microsoft","Runoob");
 ```
+
+全局替换：
+
+```
+str.replace(/Microsoft/g,"Runoob")
+```
+
+格式 `/被替换字符串/g'/
 
 ## test() 检测是否符合正则
 
