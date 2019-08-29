@@ -1,6 +1,7 @@
 # 警告警告！
 使用CMake编译，extern的函数或变量，需要使用c编译。有的时候头文件间接导入会导致某些类型不对，出现函数未定义的错误。
 
+
 # CMake脚本编写
 
 ## 指定版本号
@@ -10,6 +11,23 @@
 cmake_minimum_required(VERSION 3.4.1)
 ```
 
+## set 命令
+
+`set` 用于定义（加赋值）。  
+
+如
+
+```
+// 定义一个 A 变量
+set(A)
+
+// 定义一个 PATH 变量，并赋值为 ${PROJECT_SOURCE_DIR}
+set(B ${PROJECT_SOURCE_DIR})
+```
+
+使用：
+- 在非 if 中，使用 `${变量名}` 来引用
+- 在 if 中，直接使用变量名
 
 ## add_library
 
@@ -33,6 +51,9 @@ add_library(native-2
             src/main/cpp/base.cpp
             )
 ```
+
+- SHARED 表示静态库
+- STATIC 表示动态库
 
 ## find_library
 
@@ -89,7 +110,7 @@ include_directories(src/main/cpp
 ```
 
 
-## aux_source_directory和list
+## aux_source_directory和list 命令
 
 ```
 # 查找src/main/cpp下的所有“c/cpp”文件，并将它们的完整路径存入SRC_LIST中
@@ -107,6 +128,13 @@ list(APPEND SRC_LIST
 ```
 add_library(native SHARED ${SRC_LIST})
 ```
+
+## file 命令
+- file(GLOB_RECURES variable [Relative path] [globbing expressions]...)
+    **GLOB_RECURES** 能够查询指定目录及其子目录中的，符合条件的文件。  
+    如：`file(GLOB_RECURES SOURCE "*.c")` 会匹配 CMakeList.txt 所在目录和其子目录中的 `.c`，然后存到 **SOURCES** 变量中。
+
+
 
 ## 定义标识符
 
@@ -166,6 +194,18 @@ set_target_properties(Thirdlib # 第三方库名
 include_directories( Thirdlib/include/ ) # 包含第三方库的头文件
 ```
 
+# 内置路径变量
+
+- `${CMAKE_SOURCE_DIR}`  
+    CMakeList.txt 所在目录
+
+- `${PROJECT_SOURCE_DIR}`
+    和 `${CMAKE_SOURCE_DIR}` 等价
+
+# 内置宏
+
+- **CMAKE_LIBRARY_OUTPUT_DIRECTORY**
+    指定 cmake 编译输出的路径
 
 # 配置CMake环境
 ## 创建CMake文件

@@ -11,6 +11,10 @@ x86，x86_64
 
 也就是说，在64位Android系统中同时存在zygote和zygote64两个进程。
 
+在 **NDK r17** 版本后， `armeabi` 已经被移除了，所以配置上会出现 `ERROR: ABIs [armeabi] are not supported for platform.` 错误。
+
+使用 `armeabi-v7a` 就可以了，它能够兼容 `armeabi`。
+
 # 如何判断64位or32位
 通过反射`android.os.SystemProperties`获取`ro.product.cpu.abi`来判断。  
 
