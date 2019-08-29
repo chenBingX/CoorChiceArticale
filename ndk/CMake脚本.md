@@ -130,9 +130,9 @@ add_library(native SHARED ${SRC_LIST})
 ```
 
 ## file 命令
-- file(GLOB_RECURES variable [Relative path] [globbing expressions]...)
-    **GLOB_RECURES** 能够查询指定目录及其子目录中的，符合条件的文件。  
-    如：`file(GLOB_RECURES SOURCE "*.c")` 会匹配 CMakeList.txt 所在目录和其子目录中的 `.c`，然后存到 **SOURCES** 变量中。
+- file(GLOB_RECURSE variable [Relative path] [globbing expressions]...)
+    **GLOB_RECURSE** 能够查询指定目录及其子目录中的，符合条件的文件。  
+    如：`file(GLOB_RECURSE SOURCE "*.c")` 会匹配 CMakeList.txt 所在目录和其子目录中的 `.c`，然后存到 **SOURCES** 变量中。
 
 
 
@@ -206,6 +206,47 @@ include_directories( Thirdlib/include/ ) # 包含第三方库的头文件
 
 - **CMAKE_LIBRARY_OUTPUT_DIRECTORY**
     指定 cmake 编译输出的路径
+
+# 一个例子
+
+```
+cmake_minimum_required(VERSION 3.4.1)
+
+# 配置编译设置
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -D__ANDROID_ -g -std=gnu++11 -fexceptions -frtti -lstdc++")
+# 配置 .so 输出路径
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
+
+# 添加源文件
+set(SOURCE)
+file(GLOB_RECURSE SOURCE "${PROJECT_SOURCE_DIR}/*.cpp")
+add_library(GifLib SHARED ${SOURCE})
+
+# 添加头文件
+include_directories(${PROJECT_SOURCE_DIR})
+
+
+# 在ndk的lib-log文件夹下查找log库
+find_library(lib-log log)
+
+# 依赖库
+set(LIBS)
+list(APPEND LIBS
+    jnigraphics
+    android
+    GLESv2
+    log
+    )
+
+# 关联依赖库
+target_link_libraries(GifLib
+    ${LIBS}
+    )
+
+
+
+
+```
 
 # 配置CMake环境
 ## 创建CMake文件

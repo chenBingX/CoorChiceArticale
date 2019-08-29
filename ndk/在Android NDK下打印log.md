@@ -5,7 +5,7 @@
 #include <android/log.h>
 
 // 可选。定义方便使用的宏
-#definde LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "Tag", __VA_ARGS__)
+#defind LOGE(...) __android_log_print(ANDROID_LOG_ERROR, "Tag", __VA_ARGS__)
 
 int main(int argc, char *argv[])
 {
