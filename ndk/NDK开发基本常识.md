@@ -41,6 +41,17 @@ ndk {
 ![image](http://upload-images.jianshu.io/upload_images/1869462-5241738b950f4bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
+# 可能会遇到的问题
+
+- 使用 ndk-r12b 版本，可能会出现 c++ 无法编译的问题。  
+    改为最新版本试试，ndk-r20d.
+
+- 反复出现 **cpp** 文件未被包含在项目中的问题，在 **cFlags** 中添加 `-lstdc++` 配置。  
+    最好这样配置：
+    ```
+    set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -D__ANDROID_ -g -std=gnu++11 -fexceptions -frtti -lstdc++")
+
+    ```
 
 # 编写/注册c/c++函数
 
@@ -141,6 +152,9 @@ JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *jvm, void *reserved)
     env->UnregisterNatives(clz);
 }
 ```
+
+
+
 ### JNI描述符
 前面在动态注册时，需要生成函数映射表，其中需要一个是`函数签名`，它是由JNI描述符来描述的，写错了函数就会找不到。
 
