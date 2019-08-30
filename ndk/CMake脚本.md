@@ -55,6 +55,8 @@ add_library(native-2
 - SHARED 表示静态库
 - STATIC 表示动态库
 
+> ⚠️注意，最终生成的 `.os` 文件名为 lib自定义so库名，如：libnative.so。在 Java 中加载时，使用名称不用加 `lib` 前缀，如：`System.loadLibrary("native");`。 
+
 ## find_library
 
 ```
