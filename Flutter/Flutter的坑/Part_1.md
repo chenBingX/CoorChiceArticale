@@ -12,4 +12,18 @@
     b. 执行 `flutter attach`
     c. 重新打开app，就能链接成功了
 
+
+4. `Finished with error: Gradle build failed to produce an Android package.` 错误是由于flutter应用包名未指定
+    在 **app** 下的 `build.gradle` 中指定 **applicationId** 就可以了  
+    去掉的作用是让它能在原生 Android 工程中混编
+
+
+5. 找不到 **flutter、dart、pub** 命令   
+    打开 `.bash_profile` 添加路径，然后 `source .bash_profile`，重启命令行即可。
+    ```
+    export PATH="$PATH:/Users/coorchice/flutter/bin"
     
+    export PATH="$PATH:/Users/coorchice/flutter/bin/cache/dart-sdk"
+
+    export PATH="/Users/coorchice/flutter/bin/cache/dart-sdk/bin":$PATH
+    ```
