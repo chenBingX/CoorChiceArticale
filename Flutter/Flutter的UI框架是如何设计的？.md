@@ -145,6 +145,19 @@ WidgetsBinding：关联 Widgets 层和 Engine 的对象
 
 
 
+初始化：
+1. GestureBinding: {
+    window.onPointerDataPacket = _handlePointerDataPacket;
+}
+
+2.
+
+
+
+1. FrameCallback接收到一个 Vsync，进而调用 WidgetsBinding 中的 drawFrame()，传入根 Element 元素 renderViewElement，开始构建渲染树
+2. 在 WidgetsBinding#drawFrame() 中，会遍历需要进行重建的 Element 数组 _dirtyElements，让其中的每个 Element 的 Element#rebuild()，让他们进行重建
+
+
 rootElement -> childWidget.createElement() -> childElement.createRenderObject()
 
 
