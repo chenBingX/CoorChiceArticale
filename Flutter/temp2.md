@@ -1,14 +1,44 @@
+
+
+
+
+```
+void main() => runApp(Text("Hi，FWidget"));
+```
+
+上面代码运行起来后，我们将获得一个展示了文本的视图界面。
+
+其中，`void main() => runApp()` 是 Flutter 应用的入口，参数是一个 **Widget**。比如上例代码中的 **Text**。
+
+我们在使用 Flutter 开发应用的时候，最先，也是最多接触的就是 **Widget**（译：小部件）。**Widget** 就是 Flutter 框架定义的，用于声明（构造）视图的，我们可以将它看作一种和 Flutter 框架交流的 "语言"。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GUI（Graphical User Interface）基本要素：
 - 事件：来自系统、用户输入的事件
 - 窗口：负责视图展示窗口的建立、销毁，视图内容的管理
 - 渲染：负责绘制渲染窗口内容
 
 
+
+
+
 Widget 是用来配置渲染对象的，
 每个 Widget 都会有一个 Element
 
 
-通过 Widget 来构造视图，Flutter 会在 Vysnc 信号到来时，通过 Widget 建造一棵 Element 树，由 BuildOwner 来负责这颗树的更新。  
+通过 Widget 来构造视图，Flutter 会在 Vysnc 信号到来时，通过 Widget 建造一棵 Element 树，由 BuildOwner 来负责这颗树的更新。
 
 如果是 RenderObjectWidget，会创建对应的 RenderObjectElement，同时在 mount 的时候，会创建对应的 RenderObject，给 Widget 设置的参数实际最后是作用与 RenderObject，
 RenderObject 是真正布局和渲染的对象。
@@ -177,10 +207,10 @@ PaintingBinding: {
 
 5. 连接语义层和引擎
 SemanticsBinding: {
-    _accessibilityFeatures = window.accessibilityFeatures; 
+    _accessibilityFeatures = window.accessibilityFeatures;
 }
 
-6. 连接渲染树和引擎，创建 PipelineOwner，创建根 RenderObject ——  RenderView，添加用于触发渲染的回调 
+6. 连接渲染树和引擎，创建 PipelineOwner，创建根 RenderObject ——  RenderView，添加用于触发渲染的回调
 RendererBinding: {
   _pipelineOwner = PipelineOwner(
     onNeedVisualUpdate: ensureVisualUpdate,
@@ -231,7 +261,7 @@ RenderView#performLayout(){
           _firstFrameSent = true;
         }
       }
-        
+
 7. 连接组件树和引擎，创建 BuildOwner，它负责维护需要重新创建的 Element
 WidgetsBinding: {
   _buildOwner = BuildOwner();
@@ -259,12 +289,12 @@ WidgetsBinding#scheduleAttachRootWidget(Widget) // 调度一个Timer将用户根
                     - newChild.mount(this, newSlot); // 将子节点安装到自己的树中
           }); // 更新 BuildOwner 管理的组件。此处初始化调用实际上只会重置一下组件的状态，不会触发构建。因为 _dirtyElements 还为空
         -  SchedulerBinding.instance.ensureVisualUpdate();  //  此处调用无效，因为 schedulerPhase 还在 SchedulerPhase.idle
-          - scheduleFrame();      
-        // 如果不是首次创建， element.markNeedsBuild(); 等待frame信号，然后渲染 
-        
+          - scheduleFrame();
+        // 如果不是首次创建， element.markNeedsBuild(); 等待frame信号，然后渲染
+
 SchedulerBinding#scheduleWarmUpFrame()
   - handleBeginFrame(null);  //  绘制前
-  - handleDrawFrame(); // 绘制       
+  - handleDrawFrame(); // 绘制
     - PERSISTENT FRAME CALLBACKS：RenderBinding 初始化的时候注册了一个，后面添加的 PERSISTENT，会在绘制完后才调用
     - POST-FRAME CALLBACKS：因此，Post-Frame 是在一个 frame 信号触发完绘制之后才会调用
 
@@ -291,7 +321,7 @@ Element#mount(Element parent, ){
 ComponentElement#mount(Element parent,){
   super.mount(parent, newSlot); // 先将自己安装到树中
   _firstBuild()
-    - rebuild(); // 
+    - rebuild(); //
       - ComponentElement#performRebuild(){
         Widget built = build(); // 通过 build() 获得 Widget 组件
         _child = updateChild(_child, built, slot); // 用 built 创建自己的子 Element，如果已经有了，就是更新它
@@ -348,5 +378,3 @@ Widget# static bool canUpdate(Widget oldWidget, Widget newWidget) {
         && oldWidget.key == newWidget.key;
   }
 ```
-
-
