@@ -74,3 +74,22 @@
     renderObject.layout(BoxConstraints());
     var size = renderObject.paintBounds.size;
     ```
+
+
+7. 文字测量
+
+     ```
+     final counterInfoSpan = TextSpan(
+             text: counterInfo,
+             style: TextStyle(
+               color: getTextColor(counterInfo),
+               fontSize: 15,
+               height: 1,
+             ));
+     final tp = TextPainter(
+         text: counterInfoSpan, maxLines: 1, textDirection: TextDirection.ltr);
+     tp.layout(maxWidth: 105.5);
+
+
+     /// tp 包含了文字的必须要信息
+     ```

@@ -27,3 +27,7 @@
 
     export PATH="/Users/coorchice/flutter/bin/cache/dart-sdk/bin":$PATH
     ```
+
+6. AS 打开 Flutter 工程，出现不可关闭的空白窗口。
+    取消勾选 **Preferences.. -> Languages & Frameworks -> Flutter -> Enable code completion..**。然后重启。
+
