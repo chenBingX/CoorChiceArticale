@@ -93,3 +93,19 @@
 
      /// tp 包含了文字的必须要信息
      ```
+
+8. 找不到 'XXXPlugin.kt' 的错误
+    
+   ```
+   'XXXPlugin.kt' even though it exists. Please verify that this file has read permission and try again.
+   ```
+   
+   在 `flutter sdk/packages/flutter_tool/lib/src/platform_plugins.dart` 中，找到 `mainClassContent = mainPluginClass.readAsStringSync`
+   
+   然后删除 `flutter sdk/bin/cache/flutter_tools.snapshot`，然后重新运行，看是什么错误。
+   
+
+9. TextField 在获取焦点的时候，如果键盘没弹出，进入 pause 过程中，内容会被清空，需要在 pause 的时候清除焦点。
+    ```dart
+     FocusScope.of(context).requestFocus(FocusNode()); 
+    ```
