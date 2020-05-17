@@ -117,3 +117,17 @@ if (kIsWeb) {
     /// web 环境
 }
 ```
+
+11. Flutter 支持 macOS
+
+```
+// 配置支持 macOS
+flutter channel master  # or dev
+flutter upgrade
+flutter config --enable-macos-desktop
+
+// build
+flutter build macos
+```
+
+
