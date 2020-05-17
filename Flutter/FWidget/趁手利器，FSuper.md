@@ -1,11 +1,11 @@
 # 趁手利器，FSuper
 
-[![](https://gw.alicdn.com/tfs/TB10J77tNv1gK0jSZFFXXb0sXXa-720-353.png)](https://github.com/Fliggy-Android-Team)
+[![](https://gw.alicdn.com/tfs/TB10J77tNv1gK0jSZFFXXb0sXXa-720-353.png)](https://github.com/Fliggy-Mobile)
 
 现在，我需要向你隆重介绍，可能即将在你的 **Flutter** 编程之路中，令你爱不释手的 **趁手利器** 之一 —— **F...Super**。
 
-**FSuper** 是 **[【阿里巴巴-飞猪-Fliggy Android Team
- 技术团队】](https://github.com/Fliggy-Android-Team)** 开发的 **FWidgets** 系列组件之一。是由 **[Github 2.8k+ star 项目 《SuperTextView》]😎** 作者 **CoorChice** 操刀制作开发的 **Flutter** 组件。  
+**FSuper** 是 **[【阿里巴巴-飞猪-FliggyMobile
+ 技术团队】](https://github.com/Fliggy-Mobile)** 开发的 **FWidgets** 系列组件之一。是由 **[Github 2.8k+ star 项目 《SuperTextView》]😎** 作者 **CoorChice** 操刀制作开发的 **Flutter** 组件。  
  
  它能够助你十分便捷的实现诸多视觉效果。
  
@@ -13,7 +13,7 @@
  
  它让好，更好一点！
  
- [![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/fsuper/fsuper_all.jpg)](https://github.com/Fliggy-Android-Team/fsuper)
+ [![](https://raw.githubusercontent.com/chenBingX/img/master/Flutter/fsuper/fsuper_all.jpg)](https://github.com/Fliggy-Mobile/fsuper)
 
 
 # ✨ 特性
@@ -40,7 +40,7 @@
 
 # 🛸 传送区
 
-#### [【传送门：FSuper Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Android-Team/fsuper)
+#### [【传送门：FSuper Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Mobile/fsuper)
 
 #### [【传送门：FSuper Documentation】](https://pub.dev/documentation/fsuper/latest/fsuper/fsuper-library.html)
 
@@ -235,16 +235,16 @@ dependencies:
 dependencies:
   fsuper:
     git:
-      url: 'git@github.com:Fliggy-Android-Team/fsuper.git'
+      url: 'git@github.com:Fliggy-Mobile/fsuper.git'
       ref: '<分支号 或 tag>'
 ```
 
-> ⚠️ 注意，分支号 或 tag 请以 [**FSuper**](https://github.com/Fliggy-Android-Team/fsuper) 官方项目为准。
+> ⚠️ 注意，分支号 或 tag 请以 [**FSuper**](https://github.com/Fliggy-Mobile/fsuper) 官方项目为准。
 
 
-[![](https://raw.githubusercontent.com/chenBingX/img/master/暴漫/u=882152114,566911940&fm=26&gp=0.jpg)](https://github.com/Fliggy-Android-Team/fsuper)
+[![](https://raw.githubusercontent.com/chenBingX/img/master/暴漫/u=882152114,566911940&fm=26&gp=0.jpg)](https://github.com/Fliggy-Mobile/fsuper)
 
-#### [感觉还不错？请到 《FSuper》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Android-Team/fsuper)
+#### [感觉还不错？请到 《FSuper》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Mobile/fsuper)
 
 
 

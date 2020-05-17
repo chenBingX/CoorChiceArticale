@@ -109,3 +109,11 @@
     ```dart
      FocusScope.of(context).requestFocus(FocusNode()); 
     ```
+
+10. 如何判断是否处于 **Web** 环境？
+
+```dart
+if (kIsWeb) {
+    /// web 环境
+}
+```

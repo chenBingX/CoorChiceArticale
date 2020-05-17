@@ -1,6 +1,6 @@
 # 为精美，FButton&FSwitch
 
-[![](https://gw.alicdn.com/tfs/TB10J77tNv1gK0jSZFFXXb0sXXa-720-353.png)](https://github.com/Fliggy-Android-Team)
+[![](https://gw.alicdn.com/tfs/TB10J77tNv1gK0jSZFFXXb0sXXa-720-353.png)](https://github.com/Fliggy-Mobile)
 
 > **FWidgets** 用心提供精致的组件，助您构建精美的应用。
 
@@ -10,13 +10,13 @@
 
 如果你有注意到的话，你会发现，我们需要更多的精美的 **New GUI**！
 
-为帮助开发者能够舒适的构建出拥有精美 **GUI** 的现代应用程序，[【阿里巴巴-飞猪-Fliggy Android Team 技术团队】](https://github.com/Fliggy-Android-Team) 推出了 **FWidgets** 系列组件。
+为帮助开发者能够舒适的构建出拥有精美 **GUI** 的现代应用程序，[【阿里巴巴-飞猪-FliggyMobile 技术团队】](https://github.com/Fliggy-Mobile) 推出了 **FWidgets** 系列组件。
 
-就在前几天，我们开放了 **FWidgets** 的第一个组件 [**《FSuper》**](https://github.com/Fliggy-Android-Team/fsuper)，获得了社区开发者们良好的反馈，目前该组件已经获得了来自开发者们投出的 **214** 个 **Star**。
+就在前几天，我们开放了 **FWidgets** 的第一个组件 [**《FSuper》**](https://github.com/Fliggy-Mobile/fsuper)，获得了社区开发者们良好的反馈，目前该组件已经获得了来自开发者们投出的 **214** 个 **Star**。
 
-现在，我将为你介绍 [**FButton**](https://github.com/Fliggy-Android-Team/fbutton) 和 [**FSwitch**](https://github.com/Fliggy-Android-Team/fswitch)。
+现在，我将为你介绍 [**FButton**](https://github.com/Fliggy-Mobile/fbutton) 和 [**FSwitch**](https://github.com/Fliggy-Mobile/fswitch)。
 
-[**FButton**](https://github.com/Fliggy-Android-Team/fbutton) 能够帮助你构建丰富多彩的按钮元素，而 [**FSwitch**](https://github.com/Fliggy-Android-Team/fswitch) 将为你提供拥有良好交互的开关元素。
+[**FButton**](https://github.com/Fliggy-Mobile/fbutton) 能够帮助你构建丰富多彩的按钮元素，而 [**FSwitch**](https://github.com/Fliggy-Mobile/fswitch) 将为你提供拥有良好交互的开关元素。
 
 ![](https://gw.alicdn.com/tfs/TB1WlnfDlr0gK0jSZFnXXbRRXXa-1570-552.png)
 
@@ -56,13 +56,13 @@
 
 # 🛸 传送区
 
-#### 🔥 [【传送门：FButton Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Android-Team/fbutton)
+#### 🛸 [【传送门：FButton Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Mobile/fbutton)
 
-#### 📖 [【传送门：FButton Documentation】](https://pub.dev/documentation/fbutton/latest/fbutton/fbutton-library.html)
+#### 📖 [【传送门：FButton 文档】](https://pub.dev/documentation/fbutton/latest/fbutton/fbutton-library.html)
 
-#### 🔥 [【传送门：FSwitch Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Android-Team/fswitch)
+#### 🛸 [【传送门：FSwitch Github 主页 - 感谢您的 Star 🌟】](https://github.com/Fliggy-Mobile/fswitch)
 
-#### 📖 [【传送门：FSwitch Documentation】](https://pub.dev/documentation/fswitch/latest/fswitch/fswitch-library.html)
+#### 📖 [【传送门：FSwitch 文档】](https://pub.dev/documentation/fswitch/latest/fswitch/fswitch-library.html)
 
 
 # 🧩 FButton
@@ -389,11 +389,11 @@ dependencies:
 dependencies:
   fbutton:
     git:
-      url: 'git@github.com:Fliggy-Android-Team/fbutton.git'
+      url: 'git@github.com:Fliggy-Mobile/fbutton.git'
       ref: '<分支号 或 tag>'
 ```
 
-> ⚠️ 注意，分支号 或 tag 请以 [**FButton**](https://github.com/Fliggy-Android-Team/fbutton) 官方项目为准。
+> ⚠️ 注意，分支号 或 tag 请以 [**FButton**](https://github.com/Fliggy-Mobile/fbutton) 官方项目为准。
 
 
 - **FSwitch**
@@ -402,15 +402,15 @@ dependencies:
 dependencies:
   fswitch:
     git:
-      url: 'git@github.com:Fliggy-Android-Team/fswitch.git'
+      url: 'git@github.com:Fliggy-Mobile/fswitch.git'
       ref: '<分支号 或 tag>'
 ```
 
-> ⚠️ 注意，分支号 或 tag 请以 [**FSwitch**](https://github.com/Fliggy-Android-Team/fswitch) 官方项目为准。
+> ⚠️ 注意，分支号 或 tag 请以 [**FSwitch**](https://github.com/Fliggy-Mobile/fswitch) 官方项目为准。
 
 
-[![](https://raw.githubusercontent.com/chenBingX/img/master/暴漫/u=882152114,566911940&fm=26&gp=0.jpg)](https://github.com/Fliggy-Android-Team/)
+[![](https://raw.githubusercontent.com/chenBingX/img/master/暴漫/u=882152114,566911940&fm=26&gp=0.jpg)](https://github.com/Fliggy-Mobile/)
 
-#### [感觉 《FButton》 还不错？到 《FButton》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Android-Team/fbutton)
+#### [感觉 《FButton》 还不错？到 《FButton》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Mobile/fbutton)
 
-#### [感觉《FSwitch》还不错？到 《FSwitch》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Android-Team/fswitch)
+#### [感觉《FSwitch》还不错？到 《FSwitch》的 Github 主页投出您认可的一个 Star 🌟 吧！](https://github.com/Fliggy-Mobile/fswitch)
