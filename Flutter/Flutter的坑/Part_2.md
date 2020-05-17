@@ -128,6 +128,9 @@ flutter config --enable-macos-desktop
 
 // build
 flutter build macos
+
+// 在现有项目中添加 macOS 支持
+flutter create .
 ```
 
 
