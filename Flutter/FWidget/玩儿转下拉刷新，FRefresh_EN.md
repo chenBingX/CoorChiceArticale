@@ -81,7 +81,7 @@ Take a look at what **FRefresh** has prepared for developers:
 
 #### 🛸 [【Portal: FRefresh Github homepage-Thanks for your Star 🌟】](https://github.com/Fliggy-Mobile/frefresh)
 
-#### 📖 [【Portal: FFloat documentation】](https://pub.dev/documentation/frefresh/latest/frefresh/frefresh-library.html)
+#### 📖 [【Portal: FRefresh documentation】](https://pub.dev/documentation/frefresh/latest/frefresh/frefresh-library.html)
 
 #  💫 Basic version pull-down refresh
 
@@ -336,7 +336,7 @@ dependencies:
 
 ```
 dependencies:
-  ffloat:
+  frefresh:
     git:
       url: 'git@github.com:Fliggy-Mobile/frefresh.git'
       ref: '<Branch number or tag number>'

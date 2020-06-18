@@ -133,4 +133,45 @@ flutter build macos
 flutter create .
 ```
 
+12. 增加 image 缓存
 
+```dart
+class CustomImageCache extends WidgetsFlutterBinding {
+  @override
+  ImageCache createImageCache() {
+    ImageCache imageCache = super.createImageCache();
+    // Set your image cache size
+    imageCache.maximumSizeBytes = 1024 * 1024 * 100; // 100 MB
+    return imageCache;
+  }
+}
+
+void main() async {
+  CustomImageCache();
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
+```
+
+13. 代码中设置代理抓包
+
+```dart
+_getHttpData() async {
+  var httpClient = new HttpClient();
+  httpClient.findProxy = (url) {
+    return HttpClient.findProxyFromEnvironment(url, environment: {"http_proxy": 'http://192.168.124.7:8888',});
+  };
+  var uri =
+      new Uri.http('t.weather.sojson.com', '/api/weather/city/101210101');
+  var request = await httpClient.getUrl(uri);
+  var response = await request.close();
+  if (response.statusCode == 200) {
+    print('请求成功');
+    var responseBody = await response.transform(Utf8Decoder()).join();
+    print('responseBody = $responseBody');
+  } else {
+    print('请求失败');
+  }
+}
+
+```
