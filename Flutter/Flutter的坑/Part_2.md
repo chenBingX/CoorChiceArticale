@@ -1,10 +1,10 @@
-1. 通过 Android Studio 的 Debug 窗口中的 `Open DevTools` 可以在浏览器中打开 Flutter 的调试工具，功能强大。  
+## 1. 通过 Android Studio 的 Debug 窗口中的 `Open DevTools` 可以在浏览器中打开 Flutter 的调试工具，功能强大。  
     - 关闭左上角的 Debug 标签
     - 查看性能
     - 选择组件
     - 查看组件边界
 
-2. 如何引用一个特定的 **git** 分支/Tag 依赖？
+## 2. 如何引用一个特定的 **git** 分支/Tag 依赖？
 
     ```
     dependencies:
@@ -15,12 +15,12 @@
     ```
 
 
-3. 混编时，flutter 工程的 android 项目不能为 application，需要在app的`build.gradle` 中修改：
+## 3. 混编时，flutter 工程的 android 项目不能为 application，需要在app的`build.gradle` 中修改：
     a. `apply plugin: 'com.android.application'` 改为 `apply plugin: 'com.android.library'`
     b. 将 **applicationId** 去掉
     c. 如果不想混编译了，把他们改回去
 
-4. flutter 在 `pubspec.yaml` 中引入资源文件时，不支持多级目录，子目录也需要单独定义。 
+## 4. flutter 在 `pubspec.yaml` 中引入资源文件时，不支持多级目录，子目录也需要单独定义。 
 
 ``` 
     - lib
@@ -38,7 +38,7 @@
       - lib/icon/
   ```
 
-5. 如果一个叫做 **library1** 的包有以下结构：
+## 5. 如果一个叫做 **library1** 的包有以下结构：
   
     ```
       - pubspec.yaml
@@ -67,7 +67,7 @@
         ```  
 
 
-6. Text组件测量，文本长度测量
+## 6. Text组件测量，文本长度测量
 
     ```
     var renderObject = (textPart.build(context) as RenderObjectWidget).createRenderObject(context);
@@ -76,7 +76,7 @@
     ```
 
 
-7. 文字测量
+## 7. 文字测量
 
      ```
      final counterInfoSpan = TextSpan(
@@ -94,7 +94,7 @@
      /// tp 包含了文字的必须要信息
      ```
 
-8. 找不到 'XXXPlugin.kt' 的错误
+## 8. 找不到 'XXXPlugin.kt' 的错误
     
    ```
    'XXXPlugin.kt' even though it exists. Please verify that this file has read permission and try again.
@@ -105,12 +105,12 @@
    然后删除 `flutter sdk/bin/cache/flutter_tools.snapshot`，然后重新运行，看是什么错误。
    
 
-9. TextField 在获取焦点的时候，如果键盘没弹出，进入 pause 过程中，内容会被清空，需要在 pause 的时候清除焦点。
+## 9. TextField 在获取焦点的时候，如果键盘没弹出，进入 pause 过程中，内容会被清空，需要在 pause 的时候清除焦点。
     ```dart
      FocusScope.of(context).requestFocus(FocusNode()); 
     ```
 
-10. 如何判断是否处于 **Web** 环境？
+## 10. 如何判断是否处于 **Web** 环境？
 
 ```dart
 if (kIsWeb) {
@@ -118,7 +118,7 @@ if (kIsWeb) {
 }
 ```
 
-11. Flutter 支持 macOS
+## 11. Flutter 支持 macOS
 
 ```
 // 配置支持 macOS
@@ -133,7 +133,7 @@ flutter build macos
 flutter create .
 ```
 
-12. 增加 image 缓存
+## 12. 增加 image 缓存
 
 ```dart
 class CustomImageCache extends WidgetsFlutterBinding {
@@ -153,7 +153,7 @@ void main() async {
 }
 ```
 
-13. 代码中设置代理抓包
+## 13. 代码中设置代理抓包
 
 ```dart
 _getHttpData() async {
@@ -174,4 +174,43 @@ _getHttpData() async {
   }
 }
 
+```
+
+## 14. 区分平台导入或导出
+
+[条件导入/导出](https://dart.cn/guides/libraries/create-library-packages)
+
+## 15. macOS 常用权限配置
+
+在 `macos/Runner/DebugProfile.entitlements` 中添加：
+
+```dart
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.app-sandbox</key>
+	<true/> 
+    /// 如果需要读写其它文件，需要设置为 
+    <false/>
+
+	<key>com.apple.security.cs.allow-jit</key>
+	<true/>
+
+    /// 网络访问支持    
+	<key>com.apple.security.network.server</key>
+	<true/>
+    
+    /// 读写文件权限
+    <key>com.apple.security.files.all</key>
+    <true/>
+</dict>
+</plist>
+```
+
+## 16. 插件开发限制 Flutter 版本
+
+```
+flutter: ">=1.19.0"
 ```
