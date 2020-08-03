@@ -201,6 +201,8 @@ _getHttpData() async {
     /// 网络访问支持    
 	<key>com.apple.security.network.server</key>
 	<true/>
+    <key>com.apple.security.network.client</key>
+	<true/>
     
     /// 读写文件权限
     <key>com.apple.security.files.all</key>
