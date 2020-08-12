@@ -38,6 +38,8 @@
 
 # 🌈 显示/隐藏
 
+> 简单有效，一气呵成
+
 ![](https://gw.alicdn.com/tfs/TB1PN_dbwgP7K4jSZFqXXamhVXa-720-449.gif)
 
 ```dart
@@ -58,6 +60,8 @@ FLoading.hide();
 
 
 # 💎 自定义样式
+
+> 足够灵活，才能大放异彩
 
 ![](https://gw.alicdn.com/tfs/TB1cZHVpcKfxu4jSZPfXXb3dXXa-750-468.gif)
 
@@ -98,6 +102,8 @@ FLoading.show(context,
 即使在定义全局样式后，在特殊位置，**FLoading** 依旧允许开发者在单次构建时，指定特殊的 **Loading** 样式。
 
 # 🛰 定时隐藏和背景颜色
+
+> 从细节处，关心开发者
 
 ![](https://gw.alicdn.com/tfs/TB1LAuKaOpE_u4jSZKbXXbCUVXa-750-468.gif)
 
