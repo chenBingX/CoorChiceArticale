@@ -182,6 +182,8 @@ _getHttpData() async {
 
 ## 15. macOS 常用权限配置
 
+[官方参考](https://developer.apple.com/documentation/bundleresources/entitlements)
+
 在 `macos/Runner/DebugProfile.entitlements` 中添加：
 
 ```dart
@@ -216,3 +218,55 @@ _getHttpData() async {
 ```
 flutter: ">=1.19.0"
 ```
+
+
+## 17. 常用的  **ScrollPhysics**
+```
+BouncingScrollPhysics - iOS 风格的弹性滑动
+
+ClampingScrollPhysics - Android 风格的滑动
+
+NeverScrollableScrollPhysics - 不允许滑动
+```
+
+## 18. 剪切板
+
+复制到剪切板
+
+```
+Clipboard.setData(ClipboardData(text: '复制到剪切板'));
+```
+
+从剪切板读取
+
+```
+var text = Clipboard.getData(Clipboard.kTextPlain);
+```
+
+## 19. 通过命令在指定设备上启动应用
+
+```
+flutter run -d [设备名, 如 macOS/chrome]
+```
+
+## 20. 多 Flutter 环境共存和切换
+
+如果存在多份 Flutter，非环境变量中的 Flutter 可以通过 `fluterSDK/bin/flutter [flutter 命令]` 使用指定路径的 Flutter。
+
+
+## 21. 获取运行模式（Debug模式）
+
+```
+const bool kDebugMode = !kReleaseMode && !kProfileMode;
+```
+
+## 22. Transform 点击区域不正确
+
+- 使用 **RepaintBoundary** 包裹 **Transform** 将会导致点击区域不正确。应该将  **RepaintBoundary** 放到 **Transform** 内部。
+
+
+## 23. 秒表计时器
+
+**Stopwatch**
+
+

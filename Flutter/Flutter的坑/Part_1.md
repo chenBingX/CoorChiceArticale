@@ -31,3 +31,18 @@
 ## 6. AS 打开 Flutter 工程，出现不可关闭的空白窗口。
     取消勾选 **Preferences.. -> Languages & Frameworks -> Flutter -> Enable code completion..**。然后重启。
 
+## 7. Key 引发的bug
+
+flutter 如何判断 Widget 是否需要更新？
+
+```dart
+/// 1. 类型相同
+/// 2. Key 相等
+static bool canUpdate(Widget oldWidget, Widget newWidget) {
+  return oldWidget.runtimeType == newWidget.runtimeType
+      && oldWidget.key == newWidget.key;
+}
+```
+
+在 Widget 树刷新时，统一位置相同类型的 Widget，如果仅仅是内部属性的变化
+

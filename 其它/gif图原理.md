@@ -15,7 +15,7 @@ Gif 是基于颜色列表实现的，**像素点位置储存的是该点对应�
 
 下图为 gif 文件的 16 进制数据：
 
-![](https://raw.githubusercontent.com/chenBingX/img/master/其它/gif数据格式.png)
+![](https://gw.alicdn.com/tfs/TB1F2wwqTM11u4jSZPxXXahcXXa-980-178.png)
 
 前面的 `47494638 3961` 转换为文本就是 **GIF89a**。
 

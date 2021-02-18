@@ -323,3 +323,38 @@ ping
 
 
 
+# 查看当前使用的 shell
+
+```
+echo $SHELL
+```
+
+# 查看以安转的 shell
+
+```
+cat /etc/shells
+```
+
+# 使用 brew 安装 shell
+
+```
+brew install zsh
+```
+
+# 切换 shell 环境
+
+```
+chsh -s /bin/zsh
+```
+
+重启终端生效
+
+# 更新shell配置
+
+```
+source ~/.zshrc
+```
+
+
+
+
