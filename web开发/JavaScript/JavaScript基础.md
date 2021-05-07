@@ -211,3 +211,11 @@ function myFunction() {
 ...
 <p id="p1">一个未知的位置</p>
 ```
+
+## 定时器
+
+```dart
+setTimeout(function(){
+    // doSomething
+}, 2000);
+```
